@@ -1,0 +1,23 @@
+<div class="nav-app">
+  <div class="app">
+    <a href="{{ url_for('search') }}" class='app-link'> <i class="icon-search" aria-hidden="true"></i> Quick Search</a>
+  </div>
+  <div class="app">
+    <a href="{{ url_for('latest') }}" class='app-link'><i class=" icon-presentation" aria-hidden="true"></i> Latest Results</a>
+  </div>
+  <div class="app">
+      <a href="{{url_for('train')}}" class='app-link'><i class="icon-mic" aria-hidden="true"></i>  Train Advert</a>
+  </div>
+  <div class="app">
+    <a href="{{ url_for('total',id=1) }}" class='app-link'><i class=" icon-document" aria-hidden="true"></i>Total Results</a>
+  </div>
+  <div class="app">
+    <a href="{{ url_for('result', id=1) }}" class='app-link'><i class="icon-hourglass" aria-hidden="true"></i>  Summary</a>
+  </div>
+  <div class="app">
+    <a href="{{ url_for('settings') }}" class='app-link'><i class="icon-gears" aria-hidden="true"></i>Settings</a>
+  </div>
+  <div class="app">
+    <a href="{{ url_for('help') }}" class='app-link'><i class="icon-chat" aria-hidden="true"></i> Help &amp; Support</a>
+  </div>
+</div>

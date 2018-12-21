@@ -1,5 +1,368 @@
 {% extends 'Manager/layout/skeleton.html' %}
-
+{% load static %}
 {% block title %}
   HomePage
+{% endblock %}
+
+{% block style %}
+
+ <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+ <link rel="stylesheet" type="text/css" href="{% static 'rs-plugin/css/style.css' %}" media="screen" />
+ <link rel="stylesheet" type="text/css" href="{% static 'rs-plugin/css/navstylechange.css' %}" media="screen" />
+ <link rel="stylesheet" type="text/css" href="{% static 'rs-plugin/css/settings.css' %}" media="screen" />
+<style type="text/css">
+table{
+  border:1px solid #ddd;
+}
+table tr th{
+  font-size:13px;
+  font-family: sans-serif;
+  text-transform: capitalize;
+
+}
+table tr td{
+  font-size:13px;
+  font-family: sans-serif;
+  text-transform: capitalize;
+  font-weight: lighter;
+}
+
+table tbody tr{
+  transition: all;
+  transition-property: background-color,color;
+  transition-duration: 0.5s;
+}
+table tbody tr:hover{
+  background-color:#ddd;
+  color:white;
+  cursor: pointer;
+}
+.modal{
+  background-color:rgba(0,0,0,0.5)!important;
+
+}
+.modal-backdrop {
+   position: relative!important;
+    top: auto!important;
+    right: auto!important;
+    bottom: auto!important;
+    left: auto!important;
+    z-index:100!important;
+}
+.modal-dialog {
+   width: 600px;
+   margin: 95px auto;
+}
+.modal-header{
+  padding:10px;
+}
+
+.module, .module-small{
+    padding:50px 0px!important;
+}
+.nav-app{
+  border-radius:3px;
+  background:linear-gradient(to bottom, #1ee1fd, #12c1da);
+  min-height:150px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.nav-app .app{
+  width:14%;
+  margin-left:3px;
+}
+.app .app-link{
+  display:block;
+  height:150px;
+  text-align:center;
+  font-family: arial;
+  font-size:13px;
+  color:white;
+}
+.app-link i{
+  display:block;
+  font-size:55px;
+  line-height:110px;
+  transition: all;
+  transition-property: line-height;
+  transition-duration: 0.5s;
+}
+.app-link:hover > i{
+  line-height: 80px;
+}
+  .slider-info{
+    border:0px;
+    height: 250px;
+    width:98%;
+    border-radius:2px;
+    margin:10px!important;
+    padding:0!important;
+    /* margin:0px 10px 0px 10px; */
+  }
+  .tparrows {
+
+    border-radius: 2px !important;
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .tparrows:before{
+    font-size:12px!important;
+    margin-top:4px!important;
+    width: 30px!important;
+  }
+.medium_gradient{
+  font-size:15px!important;
+  font-weight: lighter!important;
+  padding:0 5px!important;
+  line-height: 40px!important;
+
+}
+.medium_bg_asbestos{
+  font-weight: normal!important;
+}
+</style>
+{% endblock %}
+
+{% block maincontent %}
+
+<section class="module" style="min-height:555px;">
+  <div class="container">
+          <div class="row">
+            <div class="col-sm-12 slider-info ">
+              <div class="tp-banner-container">
+              <div class="tp-banner" >
+                <ul>
+                  <li data-transition="fade"  data-slotamount="7" data-masterspeed="1500" >
+                    <img src="{% static 'assets/images/transparent.png' %}"  style="background-color:#34495e" alt="powerBas-info-intro"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                     <!-- LAYER NR. 2 -->
+                     <div class="tp-caption medium_bg_asbestos sfl"
+                          data-x="center"
+                          data-y="top"
+                          data-speed="500"
+                          data-start="1500"
+                          data-easing="Power4.easeOut"
+                          data-endspeed="300"
+                          data-endeasing="Power1.easeIn"
+                          data-captionhidden="off"
+                          data-end="8000"
+                          style="z-index: 6">powerBas !
+                        </div>
+                        <div class="tp-caption medium_bg_asbestos sft"
+                              data-x="left"
+                              data-y="top"
+                              data-speed="500"
+                              data-start="5000"
+                              data-easing="Power4.easeOut"
+                              data-endspeed="300"
+                              data-endeasing="Power1.easeIn"
+                              data-captionhidden="off"
+                              style="z-index: 6">Dear User, enjoy your app
+                            </div>
+                        <div class="tp-caption medium_bg_asbestos sft"
+                             data-x="center"
+                             data-y="80"
+                             data-speed="500"
+                             data-start="2500"
+                             data-easing="Power4.easeOut"
+                             data-endspeed="300"
+                             data-endeasing="Power1.easeIn"
+                             data-end="8000"
+                             data-captionhidden="off"
+                             style="z-index: 6">Providing Quality tracking tool with extra features
+                           </div>
+                    <div class="tp-caption largepinkbg medium_gradient customin customout tp-resizeme"
+                        data-x="center" data-hoffset="0"
+                        data-y="bottom" data-voffset="-70"
+                        data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                        data-customout="x:0;y:180;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                        data-speed="300"
+                        data-start="4500"
+                        data-easing="Back.easeOut"
+                        data-endspeed="300"
+                        data-endeasing="Back.easeIn"
+                        data-end="8000"
+                        style="z-index: 4">Thank You! <strong>powerBas</strong>  is here to fix your long term problems
+                      </div>
+                    </li>
+                  <li data-transition="parallaxtotop" data-delay='5000' data-slotamount="7" data-masterspeed="1000" >
+                    <img src="{% static 'assets/images/transparent.png' %}" style="background-color:#e64734" alt="powerBas-info-work"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                    <div class="tp-caption smoothcircle thinheadline_dark customin customout tp-resizeme"
+                        data-x="center" data-hoffset="0"
+                        data-y="center" data-voffset="0"
+                        data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                        data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                        data-speed="1000"
+                        data-start="0"
+                        data-easing="Power4.easeInOut"
+                        data-end="1000"
+                  data-endspeed="300"
+                        style="z-index: 2;padding:10px!important;font-size:13px!important;font-weight:normal!important;border-radius:100px!important;line-height:50px;">Spot On!
+                      </div>
+                      <div class="tp-caption mediumlarge_light_white customin customout tp-resizeme"
+                          data-x="center" data-hoffset="0"
+                          data-y="center" data-voffset="0"
+                          data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                          data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                          data-speed="500"
+                          data-start="1200"
+                          data-easing="Power4.easeOut"
+                          data-end="2500"
+                    data-endspeed="500"
+                          data-endeasing="Power4.easeIn"
+                          style="z-index: 2">Hi User
+                        </div>
+                        <div class="tp-caption medium_bg_asbestos customin customout tp-resizeme"
+                              data-x="center" data-hoffset="0"
+                              data-y="bottom" data-voffset="-70"
+                              data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                              data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                              data-speed="600"
+                              data-start="2500"
+                              data-easing="Power4.easeInOut"
+                              data-endspeed="300"
+                              style="z-index: 3">Have A Quick Tour !
+                            </div>
+                          </li>
+
+                    <li data-transition="parallaxtoright" data-slotamount="7" data-masterspeed="1000" >
+                      <img src="{% static 'assets/images/transparent.png' %}" style="background-color:#367dbd"  alt="powerBas-info-contact"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+
+                      <div class="tp-caption mediumlarge_light_white customin customout tp-resizeme"
+                          data-x="center" data-hoffset="0"
+                          data-y="center" data-voffset="0"
+                          data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                          data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                          data-speed="500"
+                          data-start="0"
+                          data-easing="Power4.easeOut"
+                          data-end="2000"
+                    data-endspeed="500"
+                          data-endeasing="Power4.easeIn"
+                          style="z-index: 2">What It Offer
+                        </div>
+
+
+                        <div class="tp-caption medium_bg_asbestos lft"
+                              data-x="left"
+                              data-y="top"
+                              data-speed="500"
+                              data-start="2200"
+                              data-easing="Power4.easeOut"
+                              data-endspeed="300"
+                              data-endeasing="Power1.easeIn"
+                              data-captionhidden="off"
+                              style="z-index: 6">Recording
+                            </div>
+
+                            <div class="tp-caption medium_bg_asbestos sft"
+                                  data-x="left"
+                                  data-y="center"
+                                  data-speed="500"
+                                  data-start="3000"
+                                  data-easing="Power4.easeOut"
+                                  data-endspeed="300"
+                                  data-endeasing="Power1.easeIn"
+                                  data-captionhidden="off"
+                                  style="z-index: 6">Tracking
+                                </div>
+                                <div class="tp-caption medium_bg_asbestos sfr"
+                                      data-x="right"
+                                      data-y="top"
+                                      data-speed="500"
+                                      data-start="4000"
+                                      data-easing="Power4.easeOut"
+                                      data-endspeed="300"
+                                      data-endeasing="Power1.easeIn"
+                                      data-captionhidden="off"
+                                      style="z-index: 6">Management
+                                    </div>
+                                    <div class="tp-caption medium_bg_asbestos randomrotate"
+                                          data-x="center"
+                                          data-y="center"
+                                          data-speed="500"
+                                          data-start="5000"
+                                          data-easing="Power4.easeOut"
+                                          data-endspeed="300"
+                                          data-endeasing="Power1.easeIn"
+                                          data-captionhidden="off"
+                                          style="z-index: 6">And Amazing Features
+                                        </div>
+                      </li>
+                  </ul>
+                </div>
+  </div>
+            </div>
+
+            </div>
+
+            <div class="row">
+            <div class="col-sm-12">
+              <h5> <i class='fa fa-th' style="font-size:16px;color:#1ee1fd"></i> &nbsp; Menu</h5>
+              {% include 'Manager/includes/app.html' %}
+            </div>
+          </div>
+
+          <div class="row " >
+          <div class="col-sm-12 mt-50">
+            <h5 class=" mb-20"> <i class='fa fa-flash' style="font-size:16px;color:#1ee1fd"></i> &nbsp; Quick Review</h5>
+            <section class="module">
+        <div class="container">
+          <div class="row multi-columns-row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="features-item">
+                <div class="features-icon"><span class="icon-mic"></span></div>
+                <h3 class="features-title font-alt">Endless Recording</h3> As the name implies, it records until stop button is click
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="features-item">
+                <div class="features-icon"><span class="icon-tools"></span></div>
+                <h3 class="features-title font-alt">Fast Audio Fingerprinting</h3> For better audio recognition, it provide Audio Fingerprinting faster
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="features-item">
+                <div class="features-icon"><span class="icon-linegraph"></span></div>
+                <h3 class="features-title font-alt">Fast Audio Tracking </h3> Saving Time is important, powerBas save time in audio tracking
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="features-item">
+                <div class="features-icon"><span class="icon-clock"></span></div>
+                <h3 class="features-title font-alt"> Programmed Recording  </h3>Need to set Time for Recording. Powerbas is the right tools
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+          </div>
+          </div>
+  </div>
+</section>
+
+<section class="module-small bg-app mb-20" style='padding:15px!important;color:white'>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+              <h4 class="font-alt mb-20">Need A Help ?, Have a complain ?, Just a single click</h4><a class="btn btn-border-w" href="{{url_for('help' %}">Click Here</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="module" style="min-height:255px;">
+        <div class="container">
+              <div class="row " >
+                <div class="col-sm-12 mt-20">
+                  <h5 class=" mb-20"> <i class='fa fa-map-marker' style="font-size:16px;color:#1ee1fd"></i> &nbsp; Location</h5>
+                  <div class="slider-info" style="width:100%;margin:1px!important;">
+                  </div>
+                </div>
+                </div>
+        </div>
+      </section>
+
 {% endblock %}
