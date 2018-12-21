@@ -10,15 +10,7 @@ import os
 
 def homepage(request):
 
-    context = {
-        'folder': Folder.custom.created_recently(),
-        'videos': Videos.custom.created_recently(),
-        'pictures': Pictures.custom.created_recently(),
-        'audio': Audio.custom.created_recently(),
-        'document': Document.custom.created_recently()
-    }
-
-    return render(request, "Manager/app/homepage.html", context=context)
+    return render(request, "Manager/app/homepage.html", )
 
 
 def directory(request):
