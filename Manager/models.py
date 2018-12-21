@@ -15,6 +15,10 @@ class modifier(models.Manager):
 
         return super().get_queryset().filter(hidden=True)
 
+    def get_unhide_entities(self):
+
+        return super().get_queryset().filter(hidden=False)
+
 
 # Create your models here.
 class Folder(models.Model):

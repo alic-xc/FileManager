@@ -14,7 +14,21 @@ def homepage(request):
 
 
 def directory(request):
-    pass
+
+    if request.method == 'GET':
+
+        context = {
+            'directories':Folder.custom.created_recently()
+        }
+
+        return render(request, "Manager/app/folder.html", context = context)
+
+
+
+
+    if request.method == 'POST':
+
+        return HttpResponse("bad")
 
 def view_directory(request, folder):
     pass
