@@ -1,0 +1,88 @@
+.bg-app{
+  background:linear-gradient(to bottom, #1dbde4,#1298b9);
+
+}
+.divider-b {
+    border-top: 1px solid #1dbde4;
+    margin: 0;
+}
+table{
+  border:1px solid #ddd;
+}
+table tr th{
+  font-size:13px;
+  font-family: sans-serif;
+  text-transform: capitalize;
+
+}
+table tr td{
+  font-size:13px;
+  font-family: sans-serif;
+  text-transform: capitalize;
+  font-weight: lighter;
+}
+
+table tbody tr{
+  transition: all;
+  transition-property: background-color,color;
+  transition-duration: 0.5s;
+}
+table tbody tr:hover{
+  background-color:#ddd;
+  color:white;
+  cursor: pointer;
+}
+.modal{
+  background-color:rgba(0,0,0,0.5)!important;
+
+}
+.modal-backdrop {
+   position: relative!important;
+    top: auto!important;
+    right: auto!important;
+    bottom: auto!important;
+    left: auto!important;
+    z-index:100!important;
+}
+.modal-dialog {
+   width: 600px;
+   margin: 95px auto;
+}
+.modal-header{
+  padding:10px;
+}
+
+.module, .module-small{
+    padding:50px 0px!important;
+}
+.nav-app{
+  border-radius:3px;
+  background:linear-gradient(to bottom, #1ee1fd, #12c1da);
+  min-height:150px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.nav-app .app{
+  width:14%;
+  margin-left:3px;
+}
+.app .app-link{
+  display:block;
+  height:150px;
+  text-align:center;
+  font-family: arial;
+  font-size:13px;
+  color:white;
+}
+.app-link i{
+  display:block;
+  font-size:55px;
+  line-height:110px;
+  transition: all;
+  transition-property: line-height;
+  transition-duration: 0.5s;
+}
+.app-link:hover > i{
+  line-height: 80px;
+}

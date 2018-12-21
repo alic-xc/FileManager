@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--
+    Document Title
+    =============================================
+    -->
+    <title>{% block title %} {% endblock %}</title>
+    <!--
+    Favicons
+    =============================================
+    -->
+
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/images/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--
+    Stylesheets
+    =============================================
+
+    -->
+    <!-- Default stylesheets-->
+    <link href="{% static 'assets/lib/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Template specific stylesheets-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="{% static 'assets/lib/animate.css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/components-font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/et-line-font/et-line-font.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/magnific-popup/dist/magnific-popup.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/powerbase.css' %}" rel="stylesheet">
+    <!-- Main stylesheet and color file-->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link id="color-scheme" href="{% static 'assets/css/colors/default.css' %}" rel="stylesheet">
+    <style type="text/css">
+    *{
+      letter-spacing: normal;
+    }
+      .footer{
+        color:white!important;
+      }
+      .footer p{
+        text-transform:capitalize;
+        font-family:arial!important;
+        font-weight:normal;
+        letter-spacing:normal;
+      }
+      .logo{
+        text-transform: none;
+      }
+      .alic-styler{
+        padding:5px;
+        width:100%;
+      }
+      .alic-styler select {
+        padding:5px!important;
+        border:1px solid #eee;
+        font-size:12px!important;
+        margin-left:5px;
+        margin-right:5px;
+      }
+      .alic-styler option{
+        padding:3px!important;
+      }
+      .alic-styler button{
+        float:right;
+        margin-top:2px;
+      }
+    </style>
+
+    {% block style %}
+    {% endblock %}
+    {% block script %}
+    {% endblock %}
+  </head>
+  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+      <div class="page-loader" style='background:#1bdaf5!important'>
+        <div class="loader">Loading...</div>
+      </div>
+      <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand logo" href="#">Web Os</a>
+          </div>
+          <div class="collapse navbar-collapse" id="custom-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="{% url 'home' %}">Folder</a> </li>
+              <li><a href="{% url 'home' %}">Play Music</a> </li>
+              <li><a href="{% url 'home' %}">Watch Videos</a> </li>
+              <li><a href="{% url 'home' %}">Gallery</a> </li>
+              <li><a href="{% url 'home' %}">Documents</a> </li>
+              <li><a href="{% url 'home' %}">Add Files</a> </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="main">
+          {% block maincontent %}{% endblock %}
+        <hr class="divider-b">
+        <footer class="footer bg-app">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="copyright font-alt">&copy; 2018&nbsp;<a href="https://www.alic.com/powerbas">Alic, Inc</a>, All Rights Reserved</p>
+              </div>
+              <div class="col-sm-2">
+                <p class="copyright font-alt">Theme Powered By Titan</p>
+                </div>
+                <div class="col-sm-1">
+                  <p class="copyright font-alt"><a href="#" style='color:white'>License</a></p>
+                  </div>
+                  <div class="col-sm-2">
+                    <p class="copyright font-alt"><a href="#" style='color:white'>Terms and Conditions</a></p>
+                    </div>
+                    <div class="col-sm-4">
+                      <p class="copyright font-alt">Office Address: 20 Hortico way, Lagos, Nigeria</p>
+                    </div>
+
+              </div>
+            </div>
+            </footer>
+          </div>
+      <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+    </main>
+    <!--
+    JavaScripts
+    =============================================
+    -->
+    <script src="{% static 'assets/lib/jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'assets/lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/lib/wow/dist/wow.js' %}"></script>
+    <script src="{% static 'assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js' %}"></script>
+    <script src="{% static 'assets/lib/isotope/dist/isotope.pkgd.js' %}"></script>
+    <script src="{% static 'assets/lib/imagesloaded/imagesloaded.pkgd.js' %}"></script>
+    <script src="{% static 'assets/lib/flexslider/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'assets/lib/owl.carousel/dist/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/lib/smoothscroll.js' %}"></script>
+    <script src="{% static 'assets/lib/magnific-popup/dist/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/moment.js' %}"></script>
+    <script type="text/javascript" src="{% static 'rs-plugin/js/jquery.themepunch.plugins.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'rs-plugin/js/jquery.themepunch.revolution.min.js' %}"></script>
+
+  </body>
+</html>
