@@ -24,7 +24,13 @@ Folder section
                 <div class="col-sm-3">
                   <form class="form-horizontal"  method="post">
                     {% csrf_token %}
-                      {{ form }}
+                      <div class="form-group">
+                        {{ form.folder_name }}
+                      </div>
+                      <div class="form-group">
+                        <label for=""> Hidden : </label>
+                        {{ form.hidden }}
+                      </div>
                       <button type="submit" name="button" class='btn btn-success btn-sm' >Create Folder</button>
                   </form>
                 </div>
