@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .forms import folderForm
 from .models import *
 
 import os
@@ -18,15 +19,21 @@ def directory(request):
     if request.method == 'GET':
 
         context = {
-            'directories':Folder.custom.created_recently()
+            'directories':Folder.custom.created_recently(),
+            'form': folderForm()
         }
-
         return render(request, "Manager/app/folder.html", context = context)
 
 
-
-
     if request.method == 'POST':
+
+        folder_form = folderForm(request.POST)
+
+        if folder_form.is_valid():
+
+
+            pass
+
 
         return HttpResponse("bad")
 
