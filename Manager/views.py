@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
+from django.contrib import messages
 from .forms import folderForm
 from .models import *
 
@@ -16,13 +18,6 @@ def homepage(request):
 
 def directory(request):
 
-    if request.method == 'GET':
-
-        context = {
-            'directories':Folder.custom.created_recently(),
-            'form': folderForm()
-        }
-        return render(request, "Manager/app/folder.html", context = context)
 
 
     if request.method == 'POST':
@@ -31,11 +26,28 @@ def directory(request):
 
         if folder_form.is_valid():
 
+            try:
+                # setting creating a custom folder to media
+                if os.path.exists(f"media/{ folder_form.cleaned_data['folder_name'] }") :
+                    raise Exception("Folder already exist !")
 
-            pass
+                os.mkdir(f"media/{folder_form.cleaned_data['folder_name']}")
+                messages.success(request, "Folder created successfully")
 
 
-        return HttpResponse("bad")
+                # folder = Folder(name)
+
+            except Exception as err:
+                messages.error(request, "Error when creating folder. Maybe folder name error or not having permission")
+
+            return HttpResponseRedirect(reverse("folder"))
+
+    context = {
+        'directories': Folder.custom.created_recently(),
+        'form': folderForm()
+    }
+    return render(request, "Manager/app/folder.html", context=context)
+
 
 def view_directory(request, folder):
     pass

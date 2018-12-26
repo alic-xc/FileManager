@@ -25,7 +25,6 @@ class Folder(models.Model):
 
     name = models.CharField('Folder Name', max_length=64, unique=True)
     unique = models.UUIDField('hash', default=uuid4, unique=True, editable=False)
-    quantity = models.IntegerField('Folder Size')
     hidden = models.BooleanField(default=False)
     date = models.DateTimeField('date created',auto_now_add=True)
 
