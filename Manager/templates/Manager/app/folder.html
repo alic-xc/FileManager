@@ -7,6 +7,9 @@
 {% block style %}
 
 <style type="text/css">
+  table tr td{
+    font: 400 12px/1.8 "segoe ui light", sans-serif!important;
+  }
   .right-border{
     border-right:1px solid #eee;
 
@@ -45,6 +48,13 @@
       elem.ondblclick = function(){
         this.style.display = 'none'
       }
+
+      let body = document.querySelector("body")
+      body.onkeyup = function(e){
+        if(e.key == 'Control'){
+            elem.style.display = 'block'
+        }
+      }
     })
 </script>
 
@@ -63,7 +73,7 @@
 
                 <div class="col-sm-9 right-border">
 
-                        {% if directories %}
+                        {% if recently %}
                         <div class="recently" style='border:1px solid #eee;padding:5px;overflow:auto'>
                           <h5 class="font-alt mb-0">recently Created Folders </h5>
                             <div class="folders">
@@ -77,6 +87,34 @@
                           {% endfor %}
                         </div>
                         </div>
+                        {% endif %}
+
+                        {% if directories %}
+                            <div class="all-folders">
+                              <h5 class="font-alt mb-0">Overall Folders </h5>
+                                <div class="folders" style='border:1px solid #eee;padding:5px;overflow:auto'>
+                                  <table style='width:100%;'>
+                                    <thead >
+                                      <th style='padding:5px;border:none;'>Name</th>
+                                      <th>Date Created</th>
+                                      <th> Hidden</th>
+                                      <th>Total File Found</th>
+                                    </thead>
+
+                              {% for directory in directories reversed %}
+
+                                <tr class='folder-node'>
+                                  <td><i class='fa fa-folder' style='margin-left:5px'></i>
+                                    {{ directory }}</td>
+                                    <td>{{ directory.date }}</td>
+                                    <td>  {{ directory.hidden }} </td>
+                                   <td></td>
+
+                                </tr>
+                              {% endfor %}
+                              </table>
+                            </div>
+                            </div>
                         {% endif %}
 
 
