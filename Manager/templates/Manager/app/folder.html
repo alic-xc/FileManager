@@ -1,11 +1,29 @@
 {% extends 'Manager/layout/skeleton.html' %}
 
 {% block title %}
-  powerBas: provide flexibility
+  Folder Section
 {% endblock %}
 
 {% block style %}
-Folder section
+
+<style type="text/css">
+  .folder-node{
+    font-size:13px;
+    border-bottom:1px solid #eee;
+    font-family:segoe ui light;
+    text-transform:capitalize;
+    margin:2px;
+    transition:all;
+    transition-property:background, color;
+    transition-duration: .5s;
+
+  }
+  .folder-node:hover{
+      background:#bbb;
+      color:white;
+      cursor:pointer
+  }
+</style>
 {% endblock %}
 
 {% block maincontent %}
@@ -20,7 +38,24 @@ Folder section
                 <hr class="divider-w mt-10 mb-20">
 
                 <div class="col-sm-9">
-                  
+
+                        {% if directories %}
+                        <div class="recently" style='border:1px solid #eee;padding:5px;'>
+                          <h5 class="font-alt mb-0">recently Created Folders </h5>
+                            <div class="folders">
+                          {% for directory in directories %}
+                            <figure class='folder-node'>
+                              <i class='fa fa-folder' style='margin-left:5px'></i>
+                                {{ directory }} created on {{ directory.date }}
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                ( hidden : {{ directory.hidden }} )
+                            </figure>
+                          {% endfor %}
+                        </div>
+                        </div>
+                        {% endif %}
+
+
                 </div>
                 <div class="col-sm-3">
                   <h5 class="font-alt mb-0">Create New Folder</h5>

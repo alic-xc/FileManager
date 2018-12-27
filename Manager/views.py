@@ -27,18 +27,30 @@ def directory(request):
         if folder_form.is_valid():
 
             try:
+                #checking database for existing name
+
+                exist = Folder.objects.filter(name=folder_form.cleaned_data['folder_name'])
+                if len(exist) > 0 :
+                    raise Exception("Name already exist")
+
                 # setting creating a custom folder to media
                 if os.path.exists(f"media/{ folder_form.cleaned_data['folder_name'] }") :
                     raise Exception("Folder already exist !")
 
                 os.mkdir(f"media/{folder_form.cleaned_data['folder_name']}")
+
+                folder = Folder(name=folder_form.cleaned_data['folder_name'],
+                                hidden=folder_form.cleaned_data['status'])
+
+                folder.save()
+
                 messages.success(request, "Folder created successfully")
 
 
                 # folder = Folder(name)
 
             except Exception as err:
-                messages.error(request, "Error when creating folder. Maybe folder name error or not having permission")
+                messages.error(request,err)
 
             return HttpResponseRedirect(reverse("folder"))
 
