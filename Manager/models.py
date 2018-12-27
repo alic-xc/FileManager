@@ -8,7 +8,7 @@ class modifier(models.Manager):
 
     def created_recently(self):
 
-        return super().get_queryset().filter(date__gte = datetime.now() - timedelta(days=1) )
+        return super().get_queryset().filter(date__gte = datetime.now() - timedelta(days=1) ).order_by('date')
 
 
     def get_hidden_file(self):

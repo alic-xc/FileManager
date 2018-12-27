@@ -55,7 +55,8 @@ def directory(request):
             return HttpResponseRedirect(reverse("folder"))
 
     context = {
-        'directories': Folder.custom.created_recently(),
+        'recently': Folder.custom.created_recently(),
+        'directories': Folder.objects.all(),
         'form': folderForm()
     }
     return render(request, "Manager/app/folder.html", context=context)
