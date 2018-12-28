@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d229a60b-b6f1-47f7-a8df-c419070a3932" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/folder.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/folder.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/views.py" afterDir="false" />
     </list>
@@ -58,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Manager/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
+            <state relative-caret-position="331">
+              <caret line="80" column="44" selection-start-line="80" selection-start-column="44" selection-end-line="80" selection-end-column="44" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -70,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Manager/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2430">
-              <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
+            <state relative-caret-position="-5">
+              <caret line="162" column="47" selection-start-line="162" selection-start-column="47" selection-end-line="162" selection-end-column="47" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -122,8 +120,8 @@
         <option value="$PROJECT_DIR$/Manager/managerForms.py" />
         <option value="$PROJECT_DIR$/Manager/forms.py" />
         <option value="$PROJECT_DIR$/FileManager/settings.py" />
-        <option value="$PROJECT_DIR$/Manager/views.py" />
         <option value="$PROJECT_DIR$/Manager/models.py" />
+        <option value="$PROJECT_DIR$/Manager/views.py" />
       </list>
     </option>
   </component>
@@ -256,9 +254,9 @@
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.329582" />
       <window_info anchor="bottom" id="Python Console" order="0" weight="0.329582" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.25241157" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.25241157" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.25723472" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.25723472" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -548,22 +546,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/views.py">
+    <entry file="file://$PROJECT_DIR$/Manager/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
+        <state relative-caret-position="-5">
+          <caret line="162" column="47" selection-start-line="162" selection-start-column="47" selection-end-line="162" selection-end-column="47" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/models.py">
+    <entry file="file://$PROJECT_DIR$/Manager/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2430">
-          <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
+        <state relative-caret-position="331">
+          <caret line="80" column="44" selection-start-line="80" selection-start-column="44" selection-end-line="80" selection-end-column="44" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>

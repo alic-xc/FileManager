@@ -5,6 +5,7 @@ from django.contrib import messages
 from .forms import folderForm
 from .models import *
 
+import json
 import os
 
 # Create your views here.
@@ -17,8 +18,6 @@ def homepage(request):
 
 
 def directory(request):
-
-
 
     if request.method == 'POST':
 
@@ -63,7 +62,34 @@ def directory(request):
 
 
 def view_directory(request, folder):
-    pass
+
+    context = {}
+
+    try:
+
+        if request.method == 'POST':
+
+            data = Folder.objects.filter(unique=folder)
+
+            if data.count() < 1:
+                raise Exception('Unreal folder!')
+
+            context['music'] = data.music.all()
+            context['gallery'] = data.gallery.all()
+            context['movies'] = data.movies.all()
+            context['documents'] = data.document.all()
+            context['success'] = 'successful'
+
+
+
+
+    except Exception as err:
+
+        context['error'] = err
+        return HttpResponse(json.dumps(context), content_type='application/json')
+
+
+
 
 def video(request):
     pass

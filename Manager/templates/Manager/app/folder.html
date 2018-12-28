@@ -18,6 +18,9 @@
 
     max-height:150px;
   }
+  .all-folders{
+    max-height:400px;
+  }
   .folders{
     padding:10px;
 
@@ -55,6 +58,15 @@
             elem.style.display = 'block'
         }
       }
+
+       let t = document.querySelectorAll('.folder')
+       t.forEach(function(e){
+         e.onclick = function(){
+            document.querySelector('table').style.display = 'none'
+            document.querySelector('#title').innerHTML = `${this.id}`
+
+         }
+       })
     })
 </script>
 
@@ -90,29 +102,32 @@
                         {% endif %}
 
                         {% if directories %}
-                            <div class="all-folders">
-                              <h5 class="font-alt mb-0">Overall Folders </h5>
-                                <div class="folders" style='border:1px solid #eee;padding:5px;overflow:auto'>
-                                  <table style='width:100%;'>
-                                    <thead >
+                            <div class="all-folders" style='border:1px solid #eee;margin-top:5px;padding:5px;overflow:auto'>
+                              <h5 class="font-alt mb-0" id='title'>Overall Folders </h5>
+                                <div class="folders" >
+                                  <table style='width:100%;border:none;'>
+                                    <thead>
                                       <th style='padding:5px;border:none;'>Name</th>
                                       <th>Date Created</th>
                                       <th> Hidden</th>
-                                      <th>Total File Found</th>
+                                      <th style='text-align:center;'>Total File Found</th>
                                     </thead>
-
+                                    <tbody>
                               {% for directory in directories reversed %}
-
-                                <tr class='folder-node'>
+                                <tr class='folder-node folder'  id = '{{ directory.unique }}'>
                                   <td><i class='fa fa-folder' style='margin-left:5px'></i>
                                     {{ directory }}</td>
                                     <td>{{ directory.date }}</td>
                                     <td>  {{ directory.hidden }} </td>
-                                   <td></td>
+                                   <td style='text-align:center;'> {{ directory.movies.count|add:directory.music.count|add:directory.gallery.count|add:directory.document.count }} </td>
 
                                 </tr>
                               {% endfor %}
+                              </tbody>
                               </table>
+                            </div>
+                            <div class="display-folder">
+
                             </div>
                             </div>
                         {% endif %}
