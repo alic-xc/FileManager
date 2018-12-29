@@ -80,12 +80,13 @@ def view_directory(request, folder):
             context['documents'] = data.document.all()
             context['success'] = 'successful'
 
+            return HttpResponse(json.dumps(context), content_type='application/json')
 
-
+        raise Exception("Unknown Error")
 
     except Exception as err:
 
-        context['error'] = err
+        context['error'] = str(err)
         return HttpResponse(json.dumps(context), content_type='application/json')
 
 

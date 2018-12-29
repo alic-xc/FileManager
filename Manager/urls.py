@@ -6,7 +6,7 @@ urlpatterns = [
     path('',homepage, name='home'),
 
     path('folder', directory, name='folder'),
-    path('folder/<uuid:foldername>', view_directory, name='view_folder'),
+    path('folder/<uuid:folder>', view_directory, name='view_folder'),
 
     path('video', video, name='video'),
     path('video/<uuid:filename>/access', play_video, name = 'play_video'),

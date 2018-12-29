@@ -63,11 +63,27 @@
        t.forEach(function(e){
          e.onclick = function(){
             document.querySelector('table').style.display = 'none'
-            document.querySelector('#title').innerHTML = `${this.id}`
+            request_folder(this.id, document.querySelector('.display-folder'))
 
          }
        })
     })
+
+
+    function request_folder(uuid, element){
+      const request = new XMLHttpRequest()
+      request.open("POST",`folder/${uuid}`)
+      request.onload = function(r){
+        console.log(r)
+      }
+
+      const data = new FormData()
+      data.append('uuid',uuid)
+      data.append('csrfmiddlewaretoken', {% csrf_token %})
+
+      request.send(data)
+
+    }
 </script>
 
 {% endblock %}
