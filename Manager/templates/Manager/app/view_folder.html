@@ -1,0 +1,104 @@
+{% extends 'Manager/layout/skeleton.html' %}
+
+{% block title %}
+  Folder Section
+{% endblock %}
+
+{% block style %}
+
+<style type="text/css">
+  table tr td{
+    font: 400 12px/1.8 "segoe ui light", sans-serif!important;
+  }
+  .right-border{
+    border-right:1px solid #eee;
+
+  }
+  .recently{
+
+    max-height:150px;
+  }
+  .all-folders{
+    max-height:400px;
+  }
+  .folders{
+    padding:10px;
+
+  }
+  .folder-node{
+    font-size:13px;
+    border-bottom:1px solid #eee;
+    font-family:segoe ui light;
+    text-transform:capitalize;
+    margin:2px;
+    transition:all;
+    transition-property:background, color;
+    transition-duration: .5s;
+
+  }
+  .folder-node:hover{
+      background:#bbb;
+      color:white;
+      cursor:pointer
+  }
+</style>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+
+</script>
+
+{% endblock %}
+
+{% block maincontent %}
+  <section class="module" style="min-height:555px;">
+    <div class="container">
+            <div class="row">
+              {% include 'Manager/error/error_manager.html' %}
+              {% if directory %}
+              <div class="col-sm-10 col-sm-offset-1">
+                <h4 class="font-alt mb-0"> {{ directory.name }} </h4>
+
+                <hr class="divider-w mt-10 mb-20">
+
+                <div class="col-sm-9 right-border">
+
+
+                            <div class="all-folders" style='border:1px solid #eee;margin-top:5px;padding:5px;overflow:auto'>
+                              <h5 class="font-alt mb-0" id='title'> </h5>
+                                <div class="folders" >
+                                  
+                                </div>
+
+                            </div>
+
+
+                </div>
+                <div class="col-sm-3" style=''>
+                  <h5 class="font-alt mb-0">Create New Folder</h5>
+                  <hr class="divider-w mt-10 mb-20">
+
+                  <form class="form-horizontal"  method="post">
+                    {% csrf_token %}
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                          {{ form.folder_name }}
+                        </div>
+
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                        {{ form.status }}
+                      </div>
+                      </div>
+                      <button type="submit" name="button" class='btn btn-success btn-sm' >Create Folder</button>
+                  </form>
+                </div>
+              </div>
+              {% endif %}
+
+            </div>
+        </div>
+  </section>
+{% endblock %}

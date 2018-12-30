@@ -63,31 +63,9 @@ def directory(request):
 
 def view_directory(request, folder):
 
-    context = {}
+   node = Folder.objects.get(unique=folder)
 
-    try:
-
-        if request.method == 'POST':
-
-            data = Folder.objects.filter(unique=folder)
-
-            if data.count() < 1:
-                raise Exception('Unreal folder!')
-
-            context['music'] = data.music.all()
-            context['gallery'] = data.gallery.all()
-            context['movies'] = data.movies.all()
-            context['documents'] = data.document.all()
-            context['success'] = 'successful'
-
-            return HttpResponse(json.dumps(context), content_type='application/json')
-
-        raise Exception("Unknown Error")
-
-    except Exception as err:
-
-        context['error'] = str(err)
-        return HttpResponse(json.dumps(context), content_type='application/json')
+   return render(request, 'Manager/app/view_folder.html', context={'directory':node})
 
 
 

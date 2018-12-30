@@ -48,8 +48,10 @@
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function(){
       let elem = document.querySelector(".recently")
-      elem.ondblclick = function(){
-        this.style.display = 'none'
+      if(elem != null ){
+        elem.ondblclick = function(){
+          this.style.display = 'none'
+        }
       }
 
       let body = document.querySelector("body")
@@ -62,28 +64,31 @@
        let t = document.querySelectorAll('.folder')
        t.forEach(function(e){
          e.onclick = function(){
-            document.querySelector('table').style.display = 'none'
-            request_folder(this.id, document.querySelector('.display-folder'))
+           alert(this.id)
+             location.href = `folder/${this.id}`
 
          }
        })
+
     })
 
 
-    function request_folder(uuid, element){
-      const request = new XMLHttpRequest()
-      request.open("POST",`folder/${uuid}`)
-      request.onload = function(r){
-        console.log(r)
-      }
-
-      const data = new FormData()
-      data.append('uuid',uuid)
-      data.append('csrfmiddlewaretoken', {% csrf_token %})
-
-      request.send(data)
-
-    }
+    // function request_folder(uuid, element){
+    //   // getting csrf token
+    //   const csrf = Cookies.get('csrftoken');
+    //   const request = new XMLHttpRequest();
+    //   request.open("POST",`folder/${uuid}`)
+    //   request.onload = function(){
+    //     console.log(request.response)
+    //   }
+    //
+    //   const data = new FormData()
+    //   data.append('uuid',uuid)
+    //   data.append('csrfmiddlewaretoken',csrf)
+    //
+    //   request.send(data)
+    //
+    // }
 </script>
 
 {% endblock %}
