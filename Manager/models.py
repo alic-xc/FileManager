@@ -19,6 +19,11 @@ class modifier(models.Manager):
 
         return super().get_queryset().filter(hidden=False)
 
+    def get_all_files(self):
+
+        
+
+
 
 # Create your models here.
 class Folder(models.Model):
@@ -36,6 +41,11 @@ class Folder(models.Model):
         ordering = ['name']
         verbose_name_plural = 'Folders'
 
+    def get_all(self):
+
+
+
+        pass
 
     def __str__(self):
 
@@ -54,7 +64,7 @@ class Videos(models.Model):
     height = models.IntegerField('Video Frame Height', null=False)
     summary = models.CharField('Video Summary', max_length=200, blank=False, null=False)
     hidden = models.BooleanField(default=False)
-    folder = models.ForeignKey(Folder, on_delete=models.DO_NOTHING, related_name='movies')
+    folder = models.ForeignKey(Folder, on_delete=models.CASCADE, related_name='movies')
     date = models.DateTimeField(auto_now_add=True)
 
     # models managers
@@ -105,7 +115,7 @@ class Pictures(models.Model):
     height = models.IntegerField('picture Frame Height', null=False)
     summary = models.CharField('picture Summary', max_length=200, blank=False, null=False)
     hidden = models.BooleanField(default=False)
-    folder = models.ForeignKey(Folder, on_delete=models.DO_NOTHING, related_name='gallery')
+    folder = models.ForeignKey(Folder, on_delete=models.CASCADE, related_name='gallery')
     date = models.DateTimeField(auto_now_add=True)
 
     # models managers
@@ -133,7 +143,7 @@ class Audio(models.Model):
     length = models.IntegerField('Audio Length', null=False)
     summary = models.CharField('Audio Summary', max_length=200, blank=False, null=False)
     hidden = models.BooleanField(default=False)
-    folder = models.ForeignKey(Folder, on_delete=models.DO_NOTHING, related_name='music')
+    folder = models.ForeignKey(Folder, on_delete=models.CASCADE, related_name='music')
     date = models.DateTimeField(auto_now_add=True)
 
     # models managers
@@ -180,7 +190,7 @@ class Document(models.Model):
     size = models.IntegerField("Document Size", null=False)
     summary = models.CharField('Video Summary', max_length=200, blank=False, null=False)
     hidden = models.BooleanField(default=False)
-    folder = models.ForeignKey(Folder, on_delete=models.DO_NOTHING, related_name='document')
+    folder = models.ForeignKey(Folder, on_delete=models.CASCADE, related_name='document')
     date = models.DateTimeField(auto_now_add=True)
 
     # models managers

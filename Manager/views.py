@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib import messages
 from .forms import folderForm
 from .models import *
-
+from django.db import connection
 import json
 import os
 
@@ -63,11 +63,11 @@ def directory(request):
 
 def view_directory(request, folder):
 
-   node = Folder.objects.get(unique=folder)
-
-   return render(request, 'Manager/app/view_folder.html', context={'directory':node})
+    node = Folder.objects.get(unique=folder)
 
 
+
+    return render(request, 'Manager/app/view_folder.html', context={'directory':node})
 
 
 def video(request):
