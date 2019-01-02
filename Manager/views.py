@@ -64,7 +64,11 @@ def directory(request):
 def view_directory(request, folder):
 
     node = Folder.custom.get_all_files(folder)
-    return render(request, 'Manager/app/view_folder.html', context={'directory':node})
+    return render(request, 'Manager/app/view_folder.html', context={'directory':node,
+                                                                    'video':['Mov','Avi','MP4'],
+                                                                    'music':['MP3','WAV','WMA'],
+                                                                    'document':['DOC','PDF'],
+                                                                    'picture':['JPG','PNG','GIF']})
 
 
 def video(request):

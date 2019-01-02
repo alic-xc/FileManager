@@ -30,31 +30,27 @@ class modifier(models.Manager):
 
         for data in document:
 
-            xtuple = (data.name, data.format, data.date, data.size)
+            xtuple = (data.name, data.format, data.date, data.size )
+
             refine_data.append(xtuple)
 
         for data in movies:
 
-            xtuple = (data.name, data.format, data.date, data.size)
+            xtuple = (data.name, data.format, data.date, data.size, data.lengthConverter(data.length))
             refine_data.append(xtuple)
 
         for data in music:
 
-            xtuple = (data.name, data.format, data.date, data.size)
+            xtuple = (data.name, data.format, data.date, data.size, data.lengthConverter(data.length) )
             refine_data.append(xtuple)
 
 
         for data in gallery:
 
-            xtuple = (data.name, data.format, data.date, data.size)
+            xtuple = (data.name, data.format, data.date, data.size )
             refine_data.append(xtuple)
 
-
-
-        return refine_data
-
-
-
+        return sorted(refine_data, key = lambda x: str(x[0]).lower())
 
 
 # Create your models here.
@@ -208,7 +204,7 @@ class Audio(models.Model):
 
 
 class Document(models.Model):
-    formats = (("DOC", "Document"), ("PDF", "Portable Document Format"), ("MOV", "Apple QuickTime Video"))
+    formats = (("DOC", "Document"), ("PDF", "Portable Document Format"))
 
     name = models.CharField('Name', max_length=64, unique=True, null=False)
     file_name = models.CharField('Unique',default=uuid4, max_length= 64, unique=True, null=False, editable=False)

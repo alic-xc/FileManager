@@ -41,6 +41,11 @@
       color:white;
       cursor:pointer
   }
+  table tr td{
+    font-family: "Roboto Condensed", sans-serif!important;
+    font-size:13px;
+    padding:4px;
+  }
 </style>
 {% endblock %}
 
@@ -66,23 +71,45 @@
                     <div class="all-folders" style='margin-top:5px;padding:5px;overflow:auto'>
                       <h5 class="font-alt mb-0" id='title'> </h5>
                         <div class="folders" >
-                            {% if directory.movies %}
-                                {{ directory.movies.all }}
-                            {% endif %}
+                            <table style='width:100%;border:none;'>
+                              <thead>
+                                <th style='padding:5px;border:none;'>Name</th>
+                                <th style='padding:5px;border:none;'>Type</th>
+                                <th>Date Created</th>
+                                <th style='padding:5px;border:none;'>Size</th>
+                                <th style='padding:5px;border:none;'>Length</th>
+                              </thead>
+                              <tbody>
+                                {% for data in directory %}
+                                <tr>
+                                  <td>
+                                    {% if data.1 in video %}
+                                      <i class='fa fa-film' style='margin-left:5px'></i>
+                                    {% endif %}
+                                    {% if data.1 in picture %}
+                                      <i class='fa fa-image' style='margin-left:5px'></i>
+                                    {% endif %}
+                                    {% if data.1 in music %}
+                                      <i class='fa fa-music' style='margin-left:5px'></i>
+                                    {% endif %}
+                                    {% if data.1 in document %}
+                                      <i class='fa fa-file-text' style='margin-left:5px'></i>
+                                    {% endif %}
 
-                            {% if directory.gallery %}
-                                {% for data in  directory.gallery.all %}
-                                  {{ data.size }}
-                                {% endfor%}
-                            {% endif %}
+                                    {{ data.0 }}
 
-                            {% if directory.music %}
-                                {{ directory.music.all  }}
-                            {% endif %}
+                                  </td>
+                                    <td>{{ data.1 }}</td>
+                                    <td>  {{ data.2 }} </td>
+                                    <td>  {{ data.3|divide:1000 }} </td>
+                                    <td>  {{ data.4 }} </td>
+                                </tr>
+                                {% endfor %}
+                                </<tbody>
 
-                            {% if directory.document %}
-                                {{ directory.document.all }}
-                            {% endif %}
+                                </table>
+
+
                         </div>
 
                     </div>
