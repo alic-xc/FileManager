@@ -63,10 +63,7 @@ def directory(request):
 
 def view_directory(request, folder):
 
-    node = Folder.objects.get(unique=folder)
-
-
-
+    node = Folder.custom.get_all_files(folder)
     return render(request, 'Manager/app/view_folder.html', context={'directory':node})
 
 

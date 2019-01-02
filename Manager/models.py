@@ -19,9 +19,41 @@ class modifier(models.Manager):
 
         return super().get_queryset().filter(hidden=False)
 
-    def get_all_files(self):
+    def get_all_files(self,p):
 
-        
+        refine_data = []
+        data = super().get_queryset().get(unique = p )
+        document = data.document.all()
+        movies = data.movies.all()
+        music = data.music.all()
+        gallery = data.gallery.all()
+
+        for data in document:
+
+            xtuple = (data.name, data.format, data.date, data.size)
+            refine_data.append(xtuple)
+
+        for data in movies:
+
+            xtuple = (data.name, data.format, data.date, data.size)
+            refine_data.append(xtuple)
+
+        for data in music:
+
+            xtuple = (data.name, data.format, data.date, data.size)
+            refine_data.append(xtuple)
+
+
+        for data in gallery:
+
+            xtuple = (data.name, data.format, data.date, data.size)
+            refine_data.append(xtuple)
+
+
+
+        return refine_data
+
+
 
 
 
@@ -40,12 +72,6 @@ class Folder(models.Model):
     class Meta:
         ordering = ['name']
         verbose_name_plural = 'Folders'
-
-    def get_all(self):
-
-
-
-        pass
 
     def __str__(self):
 
