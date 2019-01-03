@@ -70,24 +70,6 @@
        })
 
     })
-
-
-    // function request_folder(uuid, element){
-    //   // getting csrf token
-    //   const csrf = Cookies.get('csrftoken');
-    //   const request = new XMLHttpRequest();
-    //   request.open("POST",`folder/${uuid}`)
-    //   request.onload = function(){
-    //     console.log(request.response)
-    //   }
-    //
-    //   const data = new FormData()
-    //   data.append('uuid',uuid)
-    //   data.append('csrfmiddlewaretoken',csrf)
-    //
-    //   request.send(data)
-    //
-    // }
 </script>
 
 {% endblock %}
@@ -99,7 +81,7 @@
               {% include 'Manager/error/error_manager.html' %}
 
               <div class="col-sm-10 col-sm-offset-1">
-                <h4 class="font-alt mb-0">Folders </h4>
+                <h4 class="font-alt mb-0">Music Library</h4>
 
                 <hr class="divider-w mt-10 mb-20">
 
@@ -107,7 +89,7 @@
 
                         {% if recently %}
                         <div class="recently" style='border:1px solid #eee;padding:5px;overflow:auto'>
-                          <h5 class="font-alt mb-0">recently Created Folders </h5>
+                          <h5 class="font-alt mb-0">recently Music Added </h5>
                             <div class="folders">
                           {% for directory in recently reversed %}
                             <figure class='folder-node'>
@@ -155,14 +137,14 @@
 
                 </div>
                 <div class="col-sm-3" style=''>
-                  <h5 class="font-alt mb-0">Create New Folder</h5>
+                  <h5 class="font-alt mb-0">Add Music</h5>
                   <hr class="divider-w mt-10 mb-20">
 
                   <form class="form-horizontal"  method="post">
                     {% csrf_token %}
                       <div class="form-group">
                         <div class="col-sm-12">
-                          {{ form.folder_name }}
+                          {{ form.audio }}
                         </div>
 
                       </div>

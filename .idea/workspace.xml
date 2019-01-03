@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d229a60b-b6f1-47f7-a8df-c419070a3932" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/folder.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/folder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/view_folder.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/view_folder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/audio.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/audio.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -59,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Manager/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="363">
-              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -83,11 +80,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Manager/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+            <state relative-caret-position="251">
+              <caret line="24" column="106" selection-start-line="24" selection-start-column="106" selection-end-line="24" selection-end-column="106" />
+              <caret line="28" column="70" selection-start-line="28" selection-start-column="70" selection-end-line="28" selection-end-column="70" />
+              <caret line="32" column="107" selection-start-line="32" selection-start-column="107" selection-end-line="32" selection-end-column="107" />
             </state>
           </provider>
         </entry>
@@ -123,12 +122,12 @@
         <option value="$PROJECT_DIR$/Manager/admin.py" />
         <option value="D:/pythonics/testing/testing.py" />
         <option value="$PROJECT_DIR$/Manager/managerForms.py" />
-        <option value="$PROJECT_DIR$/Manager/forms.py" />
         <option value="$PROJECT_DIR$/FileManager/settings.py" />
         <option value="$PROJECT_DIR$/Manager/tt.py" />
         <option value="$PROJECT_DIR$/Manager/urls.py" />
         <option value="$PROJECT_DIR$/Manager/models.py" />
         <option value="$PROJECT_DIR$/Manager/views.py" />
+        <option value="$PROJECT_DIR$/Manager/forms.py" />
       </list>
     </option>
   </component>
@@ -276,14 +275,14 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.1532738" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.1532738" />
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.329582" />
       <window_info anchor="bottom" id="Python Console" order="0" weight="0.329582" />
       <window_info anchor="bottom" id="Run" order="6" weight="0.25241157" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.25723472" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.25723472" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -669,13 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Manager/apps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -738,10 +730,19 @@
     <entry file="file://$PROJECT_DIR$/Manager/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
-          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Manager/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="24" column="106" selection-start-line="24" selection-start-column="106" selection-end-line="24" selection-end-column="106" />
+          <caret line="28" column="70" selection-start-line="28" selection-start-column="70" selection-end-line="28" selection-end-column="70" />
+          <caret line="32" column="107" selection-start-line="32" selection-start-column="107" selection-end-line="32" selection-end-column="107" />
         </state>
       </provider>
     </entry>
