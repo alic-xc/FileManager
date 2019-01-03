@@ -2,26 +2,26 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
-from .forms import folderForm
+from .forms import FolderForm, AudioForm
 from .models import *
 from django.db import connection
-import json
+
+#third party module
+from pydub import AudioSegment
 import os
 
+
 # Create your views here.
-
-
-
 def homepage(request):
 
-    return render(request, "Manager/app/homepage.html", )
+    return render(request, "Manager/app/homepage.html" )
 
 
 def directory(request):
 
     if request.method == 'POST':
 
-        folder_form = folderForm(request.POST)
+        folder_form = FolderForm(request.POST)
 
         if folder_form.is_valid():
 
@@ -44,10 +44,6 @@ def directory(request):
                 folder.save()
 
                 messages.success(request, "Folder created successfully")
-
-
-                # folder = Folder(name)
-
             except Exception as err:
                 messages.error(request,err)
 
@@ -56,7 +52,7 @@ def directory(request):
     context = {
         'recently': Folder.custom.created_recently()[:3],
         'directories': Folder.objects.all(),
-        'form': folderForm()
+        'form': FolderForm()
     }
     return render(request, "Manager/app/folder.html", context=context)
 
@@ -72,13 +68,28 @@ def view_directory(request, folder):
                                                                     'document':['DOC','PDF'],
                                                                     'picture':['JPG','PNG','GIF']})
 
+
 def audio(request):
 
+    if request.method == 'POST':
+
+        form = AudioForm(request.POST, request.FILES)
+        if form.is_valid():
+
+            format = str(request.FILES['file']).rsplit(".")[-1]
+            audio_tem = AudioSegment.from_file(request.FILES['file'],format=format)
+            lenght = len(audio_tem) / 1000
+
+
+            print(size)
+            # pass
+
     context = {
-        'music': Audio.objects.all()
+        'music': Audio.objects.all(),
+        'audio':AudioForm()
     }
 
-    return render(request, "Manager/app/audio.html")
+    return render(request, "Manager/app/audio.html", context=context)
 
 def play_audio(request, filename):
     pass

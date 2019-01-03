@@ -1,7 +1,7 @@
 {% extends 'Manager/layout/skeleton.html' %}
 
 {% block title %}
-  Folder Section
+  Audio
 {% endblock %}
 
 {% block style %}
@@ -54,20 +54,20 @@
         }
       }
 
-      let body = document.querySelector("body")
-      body.onkeyup = function(e){
-        if(e.key == 'Control'){
-            elem.style.display = 'block'
-        }
-      }
+       let a = document.querySelector('#audio-file').onblur = function(){
+          let audio = this.files[0]
+          if(audio.type != 'audio/mp3' && audio.type  != 'audio/wav' && audio.type != 'audio/wma'){
+              document.querySelector('#audio-file').value =''
+              document.querySelector('#error').innerHTML = "<span>File Error. Check the input</span>"
 
-       let t = document.querySelectorAll('.folder')
-       t.forEach(function(e){
-         e.onclick = function(){
-             location.href = `folder/${this.id}`
+          }
 
-         }
-       })
+          if(audio.size < 1000 ){
+              document.querySelector('#size').value =''
+              document.querySelector('#audio-file').value =''
+              document.querySelector('#error').innerHTML = "<span>Size Error. Check the file</span>"
+          }
+     }
 
     })
 </script>
@@ -140,20 +140,32 @@
                   <h5 class="font-alt mb-0">Add Music</h5>
                   <hr class="divider-w mt-10 mb-20">
 
-                  <form class="form-horizontal"  method="post">
+                  <form class="form-horizontal"  method="post" onsubmit="validator()" enctype="multipart/form-data">
                     {% csrf_token %}
+                    <div class="alert alert-danger" id='error' style='display:none'>
+                    </div>
                       <div class="form-group">
                         <div class="col-sm-12">
-                          {{ form.audio }}
+                          {{ audio.name }}
                         </div>
-
+                      </div>
+                          {{ audio.size }}
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                        {{ audio.summary }}
+                      </div>
                       </div>
                       <div class="form-group">
                         <div class="col-sm-12">
-                        {{ form.status }}
+                        {{ audio.folder }}
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                        {{ audio.file }}
                       </div>
                       </div>
-                      <button type="submit" name="button" class='btn btn-success btn-sm' >Create Folder</button>
+                      <button type="submit"   disabled name="button" class='btn btn-success btn-sm' >Add Music</button>
                   </form>
                 </div>
               </div>
