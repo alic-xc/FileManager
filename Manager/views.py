@@ -64,24 +64,30 @@ def directory(request):
 def view_directory(request, folder):
 
     node = Folder.custom.get_all_files(folder)
+    folder = Folder.objects.get(unique=folder)
     return render(request, 'Manager/app/view_folder.html', context={'directory':node,
+                                                                    'name':folder.name,
                                                                     'video':['Mov','Avi','MP4'],
                                                                     'music':['MP3','WAV','WMA'],
                                                                     'document':['DOC','PDF'],
                                                                     'picture':['JPG','PNG','GIF']})
 
+def audio(request):
+
+    context = {
+        'music': Audio.objects.all()
+    }
+
+    return render(request, "Manager/app/audio.html")
+
+def play_audio(request, filename):
+    pass
 
 def video(request):
     pass
 
 
 def play_video(request, filename):
-    pass
-
-def audio(request):
-    pass
-
-def play_audio(request, filename):
     pass
 
 def picture(request):

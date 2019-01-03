@@ -19,10 +19,24 @@ class modifier(models.Manager):
 
         return super().get_queryset().filter(hidden=False)
 
-    def get_all_files(self,p):
+    def sizecalculator(self, size:int):
+
+        x = size
+        if x < 1000 :
+            return f"{x} kb"
+
+        if x >= 1000 and  x < 1000000:
+            return f" { round(x/1024)} mb"
+
+        if x >= 1000000:
+            return f"{ round(x/ (1024 * 1024 ))}gb"
+
+        return "unknown file size!"
+
+    def get_all_files(self, p):
 
         refine_data = []
-        data = super().get_queryset().get(unique = p )
+        data = super().get_queryset().get(unique=p)
         document = data.document.all()
         movies = data.movies.all()
         music = data.music.all()
@@ -30,27 +44,30 @@ class modifier(models.Manager):
 
         for data in document:
 
-            xtuple = (data.name, data.format, data.date, data.size )
+            xtuple = (data.name, data.format, data.date, self.sizecalculator(data.size),'', data.hash )
 
             refine_data.append(xtuple)
 
         for data in movies:
 
-            xtuple = (data.name, data.format, data.date, data.size, data.lengthConverter(data.length))
+            xtuple = (data.name, data.format, data.date, self.sizecalculator(data.size),
+                      data.lengthConverter(data.length), data.hash)
             refine_data.append(xtuple)
 
         for data in music:
 
-            xtuple = (data.name, data.format, data.date, data.size, data.lengthConverter(data.length) )
+            xtuple = (data.name, data.format, data.date, self.sizecalculator(data.size),
+                      data.lengthConverter(data.length), data.hash )
             refine_data.append(xtuple)
 
 
         for data in gallery:
 
-            xtuple = (data.name, data.format, data.date, data.size )
+            xtuple = (data.name, data.format, data.date, self.sizecalculator(data.size),'', data.hash )
             refine_data.append(xtuple)
 
         return sorted(refine_data, key = lambda x: str(x[0]).lower())
+
 
 
 # Create your models here.
@@ -78,7 +95,7 @@ class Videos(models.Model):
     formats = (("MP4","Mpeg 4"),("Avi","Audio Video Interface"),("MOV","Apple QuickTime Video"))
 
     name = models.CharField('Name',  max_length=64, unique=True, null=False)
-    file_name = models.CharField('Unique',default=uuid4, max_length= 64, unique=True, null=False, editable=False)
+    hash = models.CharField('Unique',default=uuid4, max_length= 64, unique=True, null=False, editable=False)
     format = models.CharField('Format', choices=formats, max_length=3, null=False )
     size = models.IntegerField("Video Size", null=False)
     length = models.IntegerField('Video Length', null=False)
@@ -97,40 +114,36 @@ class Videos(models.Model):
         ordering = ['date']
         verbose_name_plural = 'Videos'
 
-
-
-    def lengthConverter(self, length:int ):
+    def lengthConverter(self, length: int):
 
         hours = 0
         minutes = 0
         seconds = 0
 
         if length < 3600:
-
             minutes = floor(length / 60)
             seconds = length % 60
 
-        if length >= 3600:
+            return f"{minutes}m :{seconds}s"
 
+        if length >= 3600:
             hours = floor(length / 3600)
             minutes = floor((length % 3600) / 60)
             seconds = length % 60
 
-        return f"{hours}:{minutes}:{seconds}"
+            return f"{hours}h :{minutes}m :{seconds}s"
+
 
     def __str__(self):
 
         return f" { self.name } - { self.size } ( {self.lengthConverter(self.length) }) ";
 
 
-
-
-
 class Pictures(models.Model):
     formats = (("JPG", "joint Photographics Group"), ("GIF", "graphic interchange format"), ("PNG", "portable network graphic"))
 
     name = models.CharField('Name', max_length=64, unique=True, null=False)
-    file_name = models.CharField('Unique',default=uuid4, max_length= 64, unique=True, null=False, editable=False)
+    hash = models.CharField('Unique',default=uuid4, max_length= 64, unique=True, null=False, editable=False)
     format = models.CharField('Format', choices=formats, max_length=3, null=False)
     size = models.IntegerField("Picture Size", null=False)
     width = models.IntegerField('picture Frame Width', null=False)
@@ -159,7 +172,7 @@ class Audio(models.Model):
     formats = (("MP3", "Mpeg 3"), ("WMA", "Windows Media Audio"), ("WAV", "Wave"))
 
     name = models.CharField('Name', max_length=64, unique=True, null=False)
-    file_name = models.CharField('Unique',default=uuid4, max_length= 64, unique=True, null=False, editable=False)
+    hash = models.CharField('Unique',default=uuid4, max_length= 64, unique=True, null=False, editable=False)
     format = models.CharField('Format', choices=formats, max_length=3, null=False)
     size = models.IntegerField("Audio Size", null=False)
     length = models.IntegerField('Audio Length', null=False)
@@ -189,13 +202,17 @@ class Audio(models.Model):
             minutes = floor(length / 60)
             seconds = length % 60
 
+            return f"{minutes}m :{seconds}s"
+
         if length >= 3600:
 
             hours = floor(length / 3600)
             minutes = floor((length % 3600) / 60)
             seconds = length % 60
 
-        return f"{hours}:{minutes}:{seconds}"
+            return f"{hours}h :{minutes}m :{seconds}s"
+
+
 
 
     def __str__(self):
@@ -207,7 +224,7 @@ class Document(models.Model):
     formats = (("DOC", "Document"), ("PDF", "Portable Document Format"))
 
     name = models.CharField('Name', max_length=64, unique=True, null=False)
-    file_name = models.CharField('Unique',default=uuid4, max_length= 64, unique=True, null=False, editable=False)
+    hash = models.CharField('Unique',default=uuid4, max_length= 64, unique=True, null=False, editable=False)
     format = models.CharField('Format', choices=formats, max_length=3, null=False)
     size = models.IntegerField("Document Size", null=False)
     summary = models.CharField('Video Summary', max_length=200, blank=False, null=False)
