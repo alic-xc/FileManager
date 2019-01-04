@@ -56,20 +56,31 @@
 
        let a = document.querySelector('#audio-file').onblur = function(){
           let audio = this.files[0]
-          if(audio.type != 'audio/mp3' && audio.type  != 'audio/wav' && audio.type != 'audio/wma'){
-              document.querySelector('#audio-file').value =''
-              document.querySelector('#error').innerHTML = "<span>File Error. Check the input</span>"
-
+          if(audio.type == 'audio/mp3' || audio.type  == 'audio/wav' || audio.type == 'audio/wma'){
+                document.querySelector('#button').disabled = false
+                document.querySelector('#size').value = audio.size
           }
-
-          if(audio.size < 1000 ){
-              document.querySelector('#size').value =''
-              document.querySelector('#audio-file').value =''
-              document.querySelector('#error').innerHTML = "<span>Size Error. Check the file</span>"
-          }
-     }
-
+        }
     })
+
+    function validator(){
+      let audio = document.querySelector('#audio-file').files[0]
+         if(audio.type != 'audio/mp3' && audio.type  != 'audio/wav' && audio.type != 'audio/wma'){
+             document.querySelector('#error').innerHTML = "<span>File Error. Check the input</span>"
+             setTimeout(
+             function(){document.querySelector('#error').style.display='none'},3000)
+             return false
+         }
+
+         if(audio.size < 1000 ){
+             document.querySelector('#error').innerHTML = "<span>Size Error. Check the file</span>"
+             setTimeout(
+             function(){document.querySelector('#error').style.display='none'},3000)
+             return false
+         }
+
+         return true
+    }
 </script>
 
 {% endblock %}
@@ -165,7 +176,7 @@
                         {{ audio.file }}
                       </div>
                       </div>
-                      <button type="submit"   disabled name="button" class='btn btn-success btn-sm' >Add Music</button>
+                      <button type="submit" id='button'  disabled name="button" class='btn btn-success btn-sm' >Add Music</button>
                   </form>
                 </div>
               </div>

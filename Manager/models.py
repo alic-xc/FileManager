@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from django.db import models
-from math import floor
+from math import floor, ceil, log
 from uuid import uuid4
 
 
@@ -21,17 +21,13 @@ class modifier(models.Manager):
 
     def sizecalculator(self, size:int):
 
-        x = size
-        if x < 1000 :
-            return f"{x} kb"
+        sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if size == 0:
+            return 'n/a';
 
-        if x >= 1000 and  x < 1000000:
-            return f" { round(x/1024)} mb"
+        i = floor(log(size) / log(1024))
+        return str(round(size / pow(1024, i), 2)) + ' ' + sizes[i];
 
-        if x >= 1000000:
-            return f"{ round(x/ (1024 * 1024 ))}gb"
-
-        return "unknown file size!"
 
     def get_all_files(self, p):
 

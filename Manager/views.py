@@ -7,7 +7,6 @@ from .models import *
 from django.db import connection
 
 #third party module
-from pydub import AudioSegment
 import os
 
 
@@ -75,13 +74,24 @@ def audio(request):
 
         form = AudioForm(request.POST, request.FILES)
         if form.is_valid():
+            #import only on valid form input
+            try:
+                from pydub import AudioSegment
+                format = str(request.FILES['file']).rsplit(".")[-1]
+                audio_tem = AudioSegment.from_file(request.FILES['file'],format=format)
+                lenght = len(audio_tem) / 1000
 
-            format = str(request.FILES['file']).rsplit(".")[-1]
-            audio_tem = AudioSegment.from_file(request.FILES['file'],format=format)
-            lenght = len(audio_tem) / 1000
+                
 
+            except ModuleNotFoundError:
+                messages.error(request,'Server Internal Error!. Module Not Found')
+                return HttpResponseRedirect(reverse('audio'))
 
-            print(size)
+            except Folder.DoesNotExist:
+
+                messages.error(request,'Invalid Folder. Folder Not Found')
+                return HttpResponseRedirect(reverse('audio'))
+
             # pass
 
     context = {
