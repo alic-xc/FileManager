@@ -57,8 +57,10 @@
        let a = document.querySelector('#audio-file').onblur = function(){
           let audio = this.files[0]
           if(audio.type == 'audio/mp3' || audio.type  == 'audio/wav' || audio.type == 'audio/wma'){
-                document.querySelector('#button').disabled = false
+
                 document.querySelector('#size').value = audio.size
+                document.querySelector('#button').disabled = false
+
           }
         }
     })
@@ -161,6 +163,7 @@
                         </div>
                       </div>
                           {{ audio.size }}
+                          {{ audio.length }}
                       <div class="form-group">
                         <div class="col-sm-12">
                         {{ audio.summary }}

@@ -153,6 +153,11 @@ document.addEventListener('DOMContentLoaded', function(){
                 </div>
 
               </div>
+              {% else %}
+              <div class="alert alert-danger" data-alert="true" role="alert">
+                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <span>Folder Empty</span>
+              </div>
               {% endif %}
 
             </div>
