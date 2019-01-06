@@ -41,6 +41,11 @@
       color:white;
       cursor:pointer
   }
+  table tr td{
+    font-family: "Roboto Condensed", sans-serif!important;
+    font-size:13px;
+    padding:4px;
+  }
 </style>
 {% endblock %}
 
@@ -123,20 +128,20 @@
                                   <table style='width:100%;border:none;'>
                                     <thead>
                                       <th style='padding:5px;border:none;'>Name</th>
-                                      <th style='padding:5px;border:none;'>Type</th>
-                                      <th style='padding:5px;border:none;'>Size</th>
+                                      <th style='padding:5px;border:none;'>Summary</th>
+                                      <th style='padding:5px;border:none;'>Hidden</th>
                                       <th>Date Uploaded</th>
                                     </thead>
                                     <tbody>
-                              {% for directory in directories reversed %}
+                              {% for directory in music reversed %}
                                 <tr class='folder-node folder'  id = '{{ directory.unique }}'>
-                                  <td><i class='fa fa-folder' style='margin-left:5px'></i>
-                                    {{ directory }}</td>
-                                    <td>{{ directory.date }}</td>
+                                  <td><i class='fa fa-music' style='margin-left:5px'></i>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{{ directory }}</td>
+                                    <td>  {{ directory.summary }} </td>
                                     <td>  {{ directory.hidden }} </td>
-                                   <td style='text-align:center;'> {{ directory.movies.count|add:directory.music.count|add:directory.gallery.count|add:directory.document.count }} </td>
+                                    <td>{{ directory.date }}</td>
 
-                                </tr>
+                                  </tr>
                               {% endfor %}
                               </tbody>
                               </table>
