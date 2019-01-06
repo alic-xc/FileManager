@@ -113,9 +113,8 @@ document.addEventListener('DOMContentLoaded', function(){
                               <thead>
                                 <th style='padding:5px;border:none;'>Name</th>
                                 <th style='padding:5px;border:none;'>Type</th>
-                                <th>Date Created</th>
                                 <th style='padding:5px;border:none;'>Size</th>
-                                <th style='padding:5px;border:none;'>Length</th>
+                                <th>Date Uploaded</th>
                               </thead>
                               <tbody>
                                 {% for data in directory %}
@@ -132,12 +131,12 @@ document.addEventListener('DOMContentLoaded', function(){
                                     {% endif %}
                                     {% if data.1 in document %}
                                       <i class='fa fa-file-text' style='margin-left:5px'></i>
-                                    {% endif %}&nbsp;&nbsp;{{ data.0 }}
+                                    {% endif %} &nbsp;&nbsp;{{ data.0 }}
                                   </td>
                                     <td>{{ data.1 }}</td>
-                                    <td>  {{ data.2 }} </td>
                                     <td>  {{ data.3 }} </td>
-                                    <td>  {{ data.4 }} </td>
+                                    <td>  {{ data.2 }} </td>
+
                                 </tr>
                                 {% endfor %}
                                 </<tbody>
@@ -148,8 +147,6 @@ document.addEventListener('DOMContentLoaded', function(){
                         </div>
 
                     </div>
-
-
                 </div>
 
               </div>

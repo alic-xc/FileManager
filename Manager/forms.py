@@ -23,10 +23,6 @@ class AudioForm(forms.Form):
                                    attrs={'id':'size'})
                               )
 
-    length = forms.IntegerField(
-                            widget=forms.HiddenInput(
-                                attrs={'id': 'length'})
-                        )
 
     summary = forms.CharField(label='Audio Summary', max_length=200,
                               widget=forms.Textarea(

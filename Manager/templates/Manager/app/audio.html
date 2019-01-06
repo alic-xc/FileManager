@@ -93,7 +93,7 @@
             <div class="row">
               {% include 'Manager/error/error_manager.html' %}
 
-              <div class="col-sm-10 col-sm-offset-1">
+              <div class="col-sm-12">
                 <h4 class="font-alt mb-0">Music Library</h4>
 
                 <hr class="divider-w mt-10 mb-20">
@@ -106,8 +106,8 @@
                             <div class="folders">
                           {% for directory in recently reversed %}
                             <figure class='folder-node'>
-                              <i class='fa fa-folder' style='margin-left:5px'></i>
-                                {{ directory }} created on {{ directory.date }}
+                              <i class='fa fa-music' style='margin-left:5px'></i>&nbsp;&nbsp;&nbsp;
+                                {{ directory }} Uploaded on {{ directory.date }}
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 ( hidden : {{ directory.hidden }} )
                             </figure>
@@ -116,16 +116,16 @@
                         </div>
                         {% endif %}
 
-                        {% if directories %}
+                        {% if music %}
                             <div class="all-folders" style='border:1px solid #eee;margin-top:5px;padding:5px;overflow:auto'>
-                              <h5 class="font-alt mb-0" id='title'>Overall Folders </h5>
+                              <h5 class="font-alt mb-0" id='title'>All Files Found </h5>
                                 <div class="folders" >
                                   <table style='width:100%;border:none;'>
                                     <thead>
                                       <th style='padding:5px;border:none;'>Name</th>
-                                      <th>Date Created</th>
-                                      <th> Hidden</th>
-                                      <th style='text-align:center;'>Total File Found</th>
+                                      <th style='padding:5px;border:none;'>Type</th>
+                                      <th style='padding:5px;border:none;'>Size</th>
+                                      <th>Date Uploaded</th>
                                     </thead>
                                     <tbody>
                               {% for directory in directories reversed %}
@@ -163,7 +163,6 @@
                         </div>
                       </div>
                           {{ audio.size }}
-                          {{ audio.length }}
                       <div class="form-group">
                         <div class="col-sm-12">
                         {{ audio.summary }}

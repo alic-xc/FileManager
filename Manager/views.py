@@ -61,7 +61,7 @@ def view_directory(request, folder):
     folder = Folder.objects.get(unique=folder)
     return render(request, 'Manager/app/view_folder.html', context={'directory':node,
                                                                     'name':folder.name,
-                                                                    'video':['Mov','Avi','MP4'],
+                                                                    'video':['MOV','AVI','MP4'],
                                                                     'music':['MP3','WAV','WMA'],
                                                                     'document':['DOC','PDF'],
                                                                     'picture':['JPG','PNG','GIF']})
@@ -76,8 +76,7 @@ def audio(request):
             # import only on valid form input
             try:
 
-                al_ex = Audio.objects.get(name= form.cleaned_data['name'])
-
+                al_ex = Audio.objects.filter(name= form.cleaned_data['name'])
                 if al_ex.count() > 0:
                     raise Exception("Already Exist")
 
@@ -89,9 +88,8 @@ def audio(request):
                 fs = FileSystemStorage('media/')
                 fs.save(os.path.join(folder.name,file_name), request.FILES['file'])
                 a = Audio(name=form.cleaned_data['name'],
-                          format=format,
+                          format=ext.upper(),
                           size=form.cleaned_data['size'],
-                          length=form.cleaned_data['length'],
                           summary=form.cleaned_data['summary'],
                           folder=folder)
 
@@ -118,6 +116,7 @@ def audio(request):
 
     context = {
         'music': Audio.objects.all(),
+        'recently':Audio.custom.created_recently(),
         'audio':AudioForm()
     }
 
