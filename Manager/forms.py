@@ -38,8 +38,31 @@ class AudioForm(forms.Form):
                            widget=forms.FileInput(
                                attrs={'class':'form-control input-sm','id':'audio-file','accept':'.mp3,.wma,.wav'}))
 
-class VideoForm():
-    pass
+class VideoForm(forms.Form):
+    name = forms.CharField(label='Video Name', max_length=50,
+                           widget=forms.TextInput(
+                               attrs={'placeholder': 'Enter Name Here', 'class': 'form-control input-sm',
+                                      'id': 'audio'}))
+
+    size = forms.IntegerField(
+        widget=forms.HiddenInput(
+            attrs={'id': 'size'})
+    )
+
+    summary = forms.CharField(label='Video Summary', max_length=200,
+                              widget=forms.Textarea(
+                                  attrs={'placeholder': 'Enter Video Summary', 'class': 'form-control input-sm'}
+                              ))
+    folder = forms.ChoiceField(label='folder', choices=(Folder.objects.values('id', 'name')),
+                               )
+
+    folder = forms.ModelChoiceField(queryset=Folder.objects.all(), empty_label="--- select destination ---",
+                                    widget=forms.Select(attrs={'class': 'form-control input-sm'}))
+
+    file = forms.FileField(label='Upload file',
+                           widget=forms.FileInput(
+                               attrs={'class': 'form-control input-sm', 'id': 'video-file',
+                                      'accept': '.mp4,.avi,.mov'}))
 
 class PictureForm():
     pass

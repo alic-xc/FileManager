@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
-from .forms import FolderForm, AudioForm
+from .forms import FolderForm, AudioForm, VideoForm
 from .models import *
 from django.core.files.storage import FileSystemStorage
 #third party module
@@ -75,12 +75,16 @@ def audio(request):
         if form.is_valid():
             # import only on valid form input
             try:
+                lists = ['mp3', 'wav', 'wma']
 
                 al_ex = Audio.objects.filter(name= form.cleaned_data['name'])
                 if al_ex.count() > 0:
                     raise Exception("Already Exist")
 
                 ext = str(request.FILES['file']).rsplit(".")[-1]
+                if ext  not in lists:
+                    raise Exception('Not a valid type')
+
                 folder = Folder.objects.get(pk=form.cleaned_data['folder'].id)
                 file_name = f"{form.cleaned_data['name']}.{ext}"
 
@@ -144,7 +148,20 @@ def play_audio(request, filename):
 
 def video(request):
 
-    pass
+    if request.method == 'POST':
+
+        data = VideoForm(request.POST, request.FILES)
+
+        if data.is_valid():
+            pass
+
+    context = {
+        'recently': Videos.custom.created_recently(),
+        'videos': Videos.objects.all(),
+        'video': VideoForm()
+    }
+
+    return render(request, 'Manager/app/video.html', context=context)
 
 
 def play_video(request, filename):

@@ -1,7 +1,7 @@
 {% extends 'Manager/layout/skeleton.html' %}
 
 {% block title %}
-  Audio
+  All Video
 {% endblock %}
 
 {% block style %}
@@ -62,16 +62,16 @@
       let t = document.querySelectorAll('.folder')
       t.forEach(function(e){
         e.onclick = function(){
-            location.href = `audio/${this.dataset.hash}/play`
+            location.href = `video/${this.dataset.hash}/play`
 
         }
       })
 
-       let a = document.querySelector('#audio-file').onblur = function(){
-          let audio = this.files[0]
-          if(audio.type == 'audio/mp3' || audio.type  == 'audio/wav' || audio.type == 'audio/wma'){
+       let a = document.querySelector('#video-file').onblur = function(){
+          let video = this.files[0]
+          if(video.type == 'video/mp4' || video.type  == 'video/avi' || video.type == 'video/mov'){
 
-                document.querySelector('#size').value = audio.size
+                document.querySelector('#size').value = video.size
                 document.querySelector('#button').disabled = false
 
           }
@@ -79,16 +79,22 @@
     })
 
     function validator(){
-      let audio = document.querySelector('#audio-file').files[0]
-         if(audio.type != 'audio/mp3' && audio.type  != 'audio/wav' && audio.type != 'audio/wma'){
+      let video = document.querySelector('#video-file').files[0]
+         if(video.type != 'video/mp4' && video.type  != 'video/avi' && audio.type != 'video/mov'){
              document.querySelector('#error').innerHTML = "<span>File Error. Check the input</span>"
              setTimeout(
              function(){document.querySelector('#error').style.display='none'},3000)
              return false
          }
 
-         if(audio.size < 1000 ){
-             document.querySelector('#error').innerHTML = "<span>Size Error. Check the file</span>"
+         if(video.size < 1000048 ){
+             document.querySelector('#error').innerHTML = "<span>Size Error. Check the file size < 1mb </span>"
+             setTimeout(
+             function(){document.querySelector('#error').style.display='none'},3000)
+             return false
+         }
+         if(video.size > 16424781 ){
+             document.querySelector('#error').innerHTML = "<span>Size Error. Check the file > 15mb </span>"
              setTimeout(
              function(){document.querySelector('#error').style.display='none'},3000)
              return false
@@ -107,7 +113,7 @@
               {% include 'Manager/error/error_manager.html' %}
 
               <div class="col-sm-12">
-                <h4 class="font-alt mb-0">Music Library</h4>
+                <h4 class="font-alt mb-0">Video Library</h4>
 
                 <hr class="divider-w mt-10 mb-20">
 
@@ -115,7 +121,7 @@
 
                         {% if recently %}
                         <div class="recently" style='border:1px solid #eee;padding:5px;overflow:auto'>
-                          <h5 class="font-alt mb-0">recently Music Added </h5>
+                          <h5 class="font-alt mb-0">recently Video Added </h5>
                             <div class="folders">
                           {% for directory in recently reversed %}
                             <figure class='folder-node'>
@@ -163,7 +169,7 @@
 
                 </div>
                 <div class="col-sm-3" style=''>
-                  <h5 class="font-alt mb-0">Add Music</h5>
+                  <h5 class="font-alt mb-0">Add Video</h5>
                   <hr class="divider-w mt-10 mb-20">
 
                   <form class="form-horizontal"  method="post" onsubmit="validator()" enctype="multipart/form-data">
@@ -172,26 +178,26 @@
                     </div>
                       <div class="form-group">
                         <div class="col-sm-12">
-                          {{ audio.name }}
+                          {{ video.name }}
                         </div>
                       </div>
-                          {{ audio.size }}
+                          {{ video.size }}
                       <div class="form-group">
                         <div class="col-sm-12">
-                        {{ audio.summary }}
+                        {{ video.summary }}
                       </div>
                       </div>
                       <div class="form-group">
                         <div class="col-sm-12">
-                        {{ audio.folder }}
+                        {{ video.folder }}
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-sm-12">
-                        {{ audio.file }}
+                        {{ video.file }}
                       </div>
                       </div>
-                      <button type="submit" id='button'  disabled name="button" class='btn btn-success btn-sm' >Add Music</button>
+                      <button type="submit" id='button'  disabled name="button" class='btn btn-success btn-sm' >Add Video</button>
                   </form>
                 </div>
               </div>
