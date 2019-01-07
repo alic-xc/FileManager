@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d229a60b-b6f1-47f7-a8df-c419070a3932" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/Manager/static/assets/js/audio-plugin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/view_audio.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/audio.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/audio.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/folder.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/folder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/video.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/video.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/view_folder.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/view_folder.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/views.py" afterDir="false" />
@@ -63,8 +66,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Manager/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="129" column="8" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="8" />
+            <state relative-caret-position="16">
+              <caret line="60" column="8" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -280,13 +283,13 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49892473" visible="true" weight="0.1532738" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49839228" visible="true" weight="0.1532738" />
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.329582" />
       <window_info anchor="bottom" id="Python Console" order="0" weight="0.329582" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.25241157" />
-      <window_info id="Structure" order="2" sideWeight="0.50107527" side_tool="true" visible="true" weight="0.1532738" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.25241157" />
+      <window_info id="Structure" order="2" sideWeight="0.5016077" side_tool="true" visible="true" weight="0.1532738" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.25723472" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
@@ -741,8 +744,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Manager/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="129" column="8" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="8" />
+        <state relative-caret-position="16">
+          <caret line="60" column="8" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

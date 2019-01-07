@@ -127,7 +127,7 @@ def play_audio(request, filename):
 
     try:
         node = Audio.objects.get(hash=filename)
-        
+
         return render(request, 'Manager/app/view_audio.html', context={'music':node})
 
     except Audio.DoesNotExist:
@@ -143,6 +143,7 @@ def play_audio(request, filename):
 
 
 def video(request):
+
     pass
 
 

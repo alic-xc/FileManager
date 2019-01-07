@@ -1,0 +1,201 @@
+{% extends 'Manager/layout/skeleton.html' %}
+
+{% block title %}
+  Audio
+{% endblock %}
+
+{% block style %}
+
+<style type="text/css">
+  table tr td{
+    font: 400 12px/1.8 "segoe ui light", sans-serif!important;
+  }
+  .right-border{
+    border-right:1px solid #eee;
+
+  }
+  .recently{
+
+    max-height:150px;
+  }
+  .all-folders{
+    max-height:400px;
+  }
+  .folders{
+    padding:10px;
+
+  }
+  .folder-node{
+    font-size:13px;
+    border-bottom:1px solid #eee;
+    font-family:segoe ui light;
+    text-transform:capitalize;
+    margin:2px;
+    transition:all;
+    transition-property:background, color;
+    transition-duration: .5s;
+
+  }
+  .folder-node:hover{
+      background:#bbb;
+      color:white;
+      cursor:pointer
+  }
+  table tr td{
+    font-family: "Roboto Condensed", sans-serif!important;
+    font-size:13px;
+    padding:4px;
+  }
+</style>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function(){
+      let elem = document.querySelector(".recently")
+      if(elem != null ){
+        elem.ondblclick = function(){
+          this.style.display = 'none'
+        }
+      }
+
+      let t = document.querySelectorAll('.folder')
+      t.forEach(function(e){
+        e.onclick = function(){
+            location.href = `audio/${this.dataset.hash}/play`
+
+        }
+      })
+
+       let a = document.querySelector('#audio-file').onblur = function(){
+          let audio = this.files[0]
+          if(audio.type == 'audio/mp3' || audio.type  == 'audio/wav' || audio.type == 'audio/wma'){
+
+                document.querySelector('#size').value = audio.size
+                document.querySelector('#button').disabled = false
+
+          }
+        }
+    })
+
+    function validator(){
+      let audio = document.querySelector('#audio-file').files[0]
+         if(audio.type != 'audio/mp3' && audio.type  != 'audio/wav' && audio.type != 'audio/wma'){
+             document.querySelector('#error').innerHTML = "<span>File Error. Check the input</span>"
+             setTimeout(
+             function(){document.querySelector('#error').style.display='none'},3000)
+             return false
+         }
+
+         if(audio.size < 1000 ){
+             document.querySelector('#error').innerHTML = "<span>Size Error. Check the file</span>"
+             setTimeout(
+             function(){document.querySelector('#error').style.display='none'},3000)
+             return false
+         }
+
+         return true
+    }
+</script>
+
+{% endblock %}
+
+{% block maincontent %}
+  <section class="module" style="min-height:555px;">
+    <div class="container">
+            <div class="row">
+              {% include 'Manager/error/error_manager.html' %}
+
+              <div class="col-sm-12">
+                <h4 class="font-alt mb-0">Music Library</h4>
+
+                <hr class="divider-w mt-10 mb-20">
+
+                <div class="col-sm-9 right-border">
+
+                        {% if recently %}
+                        <div class="recently" style='border:1px solid #eee;padding:5px;overflow:auto'>
+                          <h5 class="font-alt mb-0">recently Music Added </h5>
+                            <div class="folders">
+                          {% for directory in recently reversed %}
+                            <figure class='folder-node'>
+                              <i class='fa fa-music' style='margin-left:5px'></i>&nbsp;&nbsp;&nbsp;
+                                {{ directory }} Uploaded on {{ directory.date }}
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                ( hidden : {{ directory.hidden }} )
+                            </figure>
+                          {% endfor %}
+                        </div>
+                        </div>
+                        {% endif %}
+
+                        {% if music %}
+                            <div class="all-folders" style='border:1px solid #eee;margin-top:5px;padding:5px;overflow:auto'>
+                              <h5 class="font-alt mb-0" id='title'>All Files Found </h5>
+                                <div class="folders" >
+                                  <table style='width:100%;border:none;'>
+                                    <thead>
+                                      <th style='padding:5px;border:none;'>Name</th>
+                                      <th style='padding:5px;border:none;'>Summary</th>
+                                      <th style='padding:5px;border:none;'>Hidden</th>
+                                      <th>Date Uploaded</th>
+                                    </thead>
+                                    <tbody>
+                              {% for directory in music reversed %}
+                                <tr class='folder-node folder'  data-hash = '{{ directory.hash }}'>
+                                  <td><i class='fa fa-music' style='margin-left:5px'></i>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{{ directory }}</td>
+                                    <td>  {{ directory.summary }} </td>
+                                    <td>  {{ directory.hidden }} </td>
+                                    <td>{{ directory.date }}</td>
+
+                                  </tr>
+                              {% endfor %}
+                              </tbody>
+                              </table>
+                            </div>
+                            <div class="display-folder">
+
+                            </div>
+                            </div>
+                        {% endif %}
+
+
+                </div>
+                <div class="col-sm-3" style=''>
+                  <h5 class="font-alt mb-0">Add Music</h5>
+                  <hr class="divider-w mt-10 mb-20">
+
+                  <form class="form-horizontal"  method="post" onsubmit="validator()" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="alert alert-danger" id='error' style='display:none'>
+                    </div>
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                          {{ audio.name }}
+                        </div>
+                      </div>
+                          {{ audio.size }}
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                        {{ audio.summary }}
+                      </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                        {{ audio.folder }}
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                        {{ audio.file }}
+                      </div>
+                      </div>
+                      <button type="submit" id='button'  disabled name="button" class='btn btn-success btn-sm' >Add Music</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
+  </section>
+{% endblock %}

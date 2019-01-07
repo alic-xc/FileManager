@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function(){
                               </thead>
                               <tbody>
                                 {% for data in directory %}
-                                <tr class="folder-node folder" data-format={{ data.1 }} >
+                                <tr id={{ data.4 }} class="folder-node folder" data-format={{ data.1 }} >
                                   <td>
                                     {% if data.1 in video %}
                                       <i class='fa fa-film' style='margin-left:5px'></i>
