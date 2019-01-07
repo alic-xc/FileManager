@@ -13,7 +13,7 @@ urlpatterns = [
     path('video/<uuid:filename>/access', play_video, name = 'play_video'),
 
     path('audio', audio, name='audio'),
-    path('audio/<uuid:filename>/access', play_audio, name = 'play_audio'),
+    path('audio/<uuid:filename>/play', play_audio, name = 'play_audio'),
 
     path('picture', picture, name='picture'),
     path('picture/<uuid:filename>', view_picture, name='view_picture'),

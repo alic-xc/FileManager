@@ -59,6 +59,14 @@
         }
       }
 
+      let t = document.querySelectorAll('.folder')
+      t.forEach(function(e){
+        e.onclick = function(){
+            location.href = `audio/${this.dataset.hash}/play`
+
+        }
+      })
+
        let a = document.querySelector('#audio-file').onblur = function(){
           let audio = this.files[0]
           if(audio.type == 'audio/mp3' || audio.type  == 'audio/wav' || audio.type == 'audio/wma'){
@@ -134,7 +142,7 @@
                                     </thead>
                                     <tbody>
                               {% for directory in music reversed %}
-                                <tr class='folder-node folder'  id = '{{ directory.unique }}'>
+                                <tr class='folder-node folder'  data-hash = '{{ directory.hash }}'>
                                   <td><i class='fa fa-music' style='margin-left:5px'></i>
                                     &nbsp;&nbsp;&nbsp;&nbsp;{{ directory }}</td>
                                     <td>  {{ directory.summary }} </td>

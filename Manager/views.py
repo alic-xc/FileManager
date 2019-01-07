@@ -122,8 +122,25 @@ def audio(request):
 
     return render(request, "Manager/app/audio.html", context=context)
 
+
 def play_audio(request, filename):
-    pass
+
+    try:
+        node = Audio.objects.get(hash=filename)
+        
+        return render(request, 'Manager/app/view_audio.html', context={'music':node})
+
+    except Audio.DoesNotExist:
+        messages.error(request, "Music Not Found")
+        return render(request, 'Manager/app/view_audio.html')
+
+    except TypeError:
+
+        messages.error(request, 'Needed a recognised Value')
+        return render(request, 'Manager/app/view_audio.html')
+
+
+
 
 def video(request):
     pass

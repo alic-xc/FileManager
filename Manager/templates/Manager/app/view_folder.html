@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function(){
         case 'MP3':
         case 'WAV':
         case 'WMA':
-            location.href = `audio/${e.id}`
+            location.href = `/audio/${e.id}/play`
             break;
 
         case 'DOC':
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function(){
             break;
 
         default:
-          alert('dd')
+          break;
 
       }
         console.log(e.dataset.format)
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function(){
                               </thead>
                               <tbody>
                                 {% for data in directory %}
-                                <tr class='folder-node folder' id={{ data.5}} data-format='{{ data.1 }}'>
+                                <tr class="folder-node folder" data-format={{ data.1 }} >
                                   <td>
                                     {% if data.1 in video %}
                                       <i class='fa fa-film' style='margin-left:5px'></i>
