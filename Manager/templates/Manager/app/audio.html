@@ -80,6 +80,8 @@
 
     function validator(){
       let audio = document.querySelector('#audio-file').files[0]
+      document.querySelector('#error').style.display='block'
+
          if(audio.type != 'audio/mp3' && audio.type  != 'audio/wav' && audio.type != 'audio/wma'){
              document.querySelector('#error').innerHTML = "<span>File Error. Check the input</span>"
              setTimeout(
@@ -166,7 +168,7 @@
                   <h5 class="font-alt mb-0">Add Music</h5>
                   <hr class="divider-w mt-10 mb-20">
 
-                  <form class="form-horizontal"  method="post" onsubmit="validator()" enctype="multipart/form-data">
+                  <form class="form-horizontal"  method="post" onsubmit="return validator()" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="alert alert-danger" id='error' style='display:none'>
                     </div>

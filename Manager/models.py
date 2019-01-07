@@ -91,8 +91,6 @@ class Videos(models.Model):
     hash = models.CharField('Unique',default=uuid4, max_length= 64, unique=True, null=False, editable=False)
     format = models.CharField('Format', choices=formats, max_length=4, null=False )
     size = models.IntegerField("Video Size", null=False)
-    width = models.IntegerField('Video Frame Width', null=False)
-    height = models.IntegerField('Video Frame Height', null=False)
     summary = models.CharField('Video Summary', max_length=200, blank=False, null=False)
     hidden = models.BooleanField(default=False)
     folder = models.ForeignKey(Folder, on_delete=models.CASCADE, related_name='movies')
@@ -106,9 +104,17 @@ class Videos(models.Model):
         ordering = ['date']
         verbose_name_plural = 'Videos'
 
-    def __str__(self):
+    @staticmethod
+    def sizecalculator(size: int):
+        sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if size == 0:
+            return 'n/a';
 
-        return f" { self.name } - { self.size } ";
+        i = floor(log(size) / log(1024))
+        return str(round(size / pow(1024, i), 2)) + ' ' + sizes[i];
+
+    def __str__(self):
+        return f"{self.name} - { self.sizecalculator(self.size) } "
 
 
 class Pictures(models.Model):
@@ -136,7 +142,7 @@ class Pictures(models.Model):
 
     def __str__(self):
 
-        return f"{self.name} - {self.size} ({ self.format })"
+        return f"{self.name} - {self.size} "
 
 
 class Audio(models.Model):
@@ -172,7 +178,7 @@ class Audio(models.Model):
 
     def __str__(self):
 
-        return f"{self.name} - { self.sizecalculator(self.size) } ({ self.format })"
+        return f"{self.name} - { self.sizecalculator(self.size) } "
 
 
 class Document(models.Model):

@@ -80,6 +80,8 @@
 
     function validator(){
       let video = document.querySelector('#video-file').files[0]
+          document.querySelector('#error').style.display='block'
+
          if(video.type != 'video/mp4' && video.type  != 'video/avi' && audio.type != 'video/mov'){
              document.querySelector('#error').innerHTML = "<span>File Error. Check the input</span>"
              setTimeout(
@@ -125,7 +127,7 @@
                             <div class="folders">
                           {% for directory in recently reversed %}
                             <figure class='folder-node'>
-                              <i class='fa fa-music' style='margin-left:5px'></i>&nbsp;&nbsp;&nbsp;
+                              <i class='fa fa-film' style='margin-left:5px'></i>&nbsp;&nbsp;&nbsp;
                                 {{ directory }} Uploaded on {{ directory.date }}
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 ( hidden : {{ directory.hidden }} )
@@ -135,7 +137,7 @@
                         </div>
                         {% endif %}
 
-                        {% if music %}
+                        {% if videos %}
                             <div class="all-folders" style='border:1px solid #eee;margin-top:5px;padding:5px;overflow:auto'>
                               <h5 class="font-alt mb-0" id='title'>All Files Found </h5>
                                 <div class="folders" >
@@ -147,13 +149,13 @@
                                       <th>Date Uploaded</th>
                                     </thead>
                                     <tbody>
-                              {% for directory in music reversed %}
-                                <tr class='folder-node folder'  data-hash = '{{ directory.hash }}'>
-                                  <td><i class='fa fa-music' style='margin-left:5px'></i>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;{{ directory }}</td>
-                                    <td>  {{ directory.summary }} </td>
-                                    <td>  {{ directory.hidden }} </td>
-                                    <td>{{ directory.date }}</td>
+                              {% for video in videos reversed %}
+                                <tr class='folder-node folder'  data-hash = '{{ video.hash }}'>
+                                  <td><i class='fa fa-film' style='margin-left:5px'></i>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{{ video }}</td>
+                                    <td>  {{ video.summary }} </td>
+                                    <td>  {{ video.hidden }} </td>
+                                    <td>{{ video.date }}</td>
 
                                   </tr>
                               {% endfor %}
@@ -172,7 +174,7 @@
                   <h5 class="font-alt mb-0">Add Video</h5>
                   <hr class="divider-w mt-10 mb-20">
 
-                  <form class="form-horizontal"  method="post" onsubmit="validator()" enctype="multipart/form-data">
+                  <form class="form-horizontal"  method="post" onsubmit=" return validator()" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="alert alert-danger" id='error' style='display:none'>
                     </div>

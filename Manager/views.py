@@ -150,10 +150,50 @@ def video(request):
 
     if request.method == 'POST':
 
-        data = VideoForm(request.POST, request.FILES)
+        form = VideoForm(request.POST, request.FILES)
 
-        if data.is_valid():
-            pass
+        if form.is_valid():
+            try:
+                lists = ['mp4', 'avi', 'mov']
+
+                al_ex = Videos.objects.filter(name= form.cleaned_data['name'])
+                if al_ex.count() > 0:
+                    raise Exception("Already Exist")
+
+                ext = str(request.FILES['file']).rsplit(".")[-1]
+                if ext  not in lists:
+                    raise Exception('Not a valid type')
+
+                folder = Folder.objects.get(pk=form.cleaned_data['folder'].id)
+                file_name = f"{form.cleaned_data['name']}.{ext}"
+
+                # saving to fs
+                fs = FileSystemStorage('media/')
+                a = Videos(name=form.cleaned_data['name'],
+                          format=ext.upper(),
+                          size=form.cleaned_data['size'],
+                          summary=form.cleaned_data['summary'],
+                          folder=folder)
+
+                # saving to model
+                a.save()
+                fs.save(os.path.join(folder.name,file_name), request.FILES['file'])
+                messages.success(request,'Data saved successfully')
+                return HttpResponseRedirect(reverse('video'))
+
+            except ModuleNotFoundError:
+                messages.error(request,'Server Internal Error!. Module Not Found')
+                return HttpResponseRedirect(reverse('video'))
+
+            except Folder.DoesNotExist:
+
+                messages.error(request,'Invalid Folder. Folder Not Found')
+                return HttpResponseRedirect(reverse('video'))
+
+            except Exception as err:
+
+                messages.error(request, err)
+                return HttpResponseRedirect(reverse('video'))
 
     context = {
         'recently': Videos.custom.created_recently(),
@@ -165,7 +205,19 @@ def video(request):
 
 
 def play_video(request, filename):
-    pass
+    try:
+        node = Videos.objects.get(hash=filename)
+
+        return render(request, 'Manager/app/view_video.html', context={'video':node})
+
+    except Audio.DoesNotExist:
+        messages.error(request, "Music Not Found")
+        return render(request, 'Manager/app/view_video.html')
+
+    except TypeError:
+
+        messages.error(request, 'Needed a recognised Value')
+        return render(request, 'Manager/app/view_video.html')
 
 def picture(request):
     pass

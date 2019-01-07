@@ -1,0 +1,88 @@
+{% extends 'Manager/layout/skeleton.html' %}
+
+{% block title %}
+  Now Playing
+{% endblock %}
+
+{% block style %}
+
+<style type="text/css">
+  table tr td{
+    font: 400 12px/1.8 "segoe ui light", sans-serif!important;
+  }
+  .right-border{
+    border-right:1px solid #eee;
+
+  }
+  .recently{
+
+    max-height:150px;
+  }
+  .all-folders{
+    max-height:400px;
+  }
+  .folders{
+    padding:10px;
+
+  }
+  .folder-node{
+    font-size:13px;
+    border-bottom:1px solid #eee;
+    font-family:segoe ui light;
+    text-transform:capitalize;
+    margin:2px;
+    transition:all;
+    transition-property:background, color;
+    transition-duration: .5s;
+
+  }
+  .folder-node:hover{
+      background:linear-gradient(to bottom, #1291c3, #29b8f1);
+      color:white;
+      cursor:pointer
+  }
+  table tr td{
+    font-family: "Roboto Condensed", sans-serif!important;
+    font-size:13px;
+    padding:4px;
+  }
+</style>
+{% endblock %}
+
+{% block script %}
+<link href="https://vjs.zencdn.net/7.4.1/video-js.css" rel="stylesheet">
+
+ <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+ <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
+
+{% endblock %}
+
+{% block maincontent %}
+  <section class="module" style="min-height:555px;">
+    <div class="container">
+            <div class="row">
+              {% include 'Manager/error/error_manager.html' %}
+              {% if video %}
+              <div class="col-sm-10 col-sm-offset-1">
+                <h4 class="font-alt mb-0"> Now Playing {{ music.name }} </h4>
+                <hr class="divider-w mt-10 mb-20">
+
+                <div id="waveform">
+
+                </div>
+
+
+
+              </div>
+              {% else %}
+              <div class="alert alert-danger" data-alert="true" role="alert">
+                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <span>Folder Empty</span>
+              </div>
+              {% endif %}
+
+            </div>
+        </div>
+  </section>
+
+{% endblock %}
