@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
-from .forms import FolderForm, AudioForm, VideoForm
+from .forms import *
 from .models import *
 from django.core.files.storage import FileSystemStorage
 #third party module
@@ -220,7 +220,62 @@ def play_video(request, filename):
         return render(request, 'Manager/app/view_video.html')
 
 def picture(request):
-    pass
+
+    if request.method == 'POST':
+
+        form = PictureForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            try:
+                lists = ['jpg', 'png', 'gif']
+
+                al_ex = Pictures.objects.filter(name= form.cleaned_data['name'])
+                if al_ex.count() > 0:
+                    raise Exception("Already Exist")
+
+                ext = str(request.FILES['file']).rsplit(".")[-1]
+                if ext  not in lists:
+                    raise Exception('Not a valid type')
+
+                folder = Folder.objects.get(pk=form.cleaned_data['folder'].id)
+                file_name = f"{form.cleaned_data['name']}.{ext}"
+
+                # saving to fs
+                fs = FileSystemStorage('media/')
+                a = Pictures(name=form.cleaned_data['name'],
+                          format=ext.upper(),
+                          size=form.cleaned_data['size'],
+                          summary=form.cleaned_data['summary'],
+                          folder=folder)
+
+                # saving to model
+                a.save()
+                fs.save(os.path.join(folder.name,file_name), request.FILES['file'])
+                messages.success(request,'Data saved successfully')
+                return HttpResponseRedirect(reverse('picture'))
+
+            except ModuleNotFoundError:
+                messages.error(request,'Server Internal Error!. Module Not Found')
+                return HttpResponseRedirect(reverse('picture'))
+
+            except Folder.DoesNotExist:
+
+                messages.error(request,'Invalid Folder. Folder Not Found')
+                return HttpResponseRedirect(reverse('picture'))
+
+            except Exception as err:
+
+                messages.error(request, err)
+                return HttpResponseRedirect(reverse('picture'))
+
+    context = {
+        'recently': Pictures.custom.created_recently(),
+        'pictures': Pictures.objects.all(),
+        'picture': PictureForm()
+    }
+
+    return render(request, 'Manager/app/pictures.html', context=context)
+
 
 def view_picture(request, filename):
     pass

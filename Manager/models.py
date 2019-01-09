@@ -124,8 +124,6 @@ class Pictures(models.Model):
     hash = models.CharField('Unique',default=uuid4, max_length= 64, unique=True, null=False, editable=False)
     format = models.CharField('Format', choices=formats, max_length=4, null=False)
     size = models.IntegerField("Picture Size", null=False)
-    width = models.IntegerField('picture Frame Width', null=False)
-    height = models.IntegerField('picture Frame Height', null=False)
     summary = models.CharField('picture Summary', max_length=200, blank=False, null=False)
     hidden = models.BooleanField(default=False)
     folder = models.ForeignKey(Folder, on_delete=models.CASCADE, related_name='gallery')
@@ -143,6 +141,18 @@ class Pictures(models.Model):
     def __str__(self):
 
         return f"{self.name} - {self.size} "
+
+    @staticmethod
+    def sizecalculator(size: int):
+        sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if size == 0:
+            return 'n/a';
+
+        i = floor(log(size) / log(1024))
+        return str(round(size / pow(1024, i), 2)) + ' ' + sizes[i];
+
+    def __str__(self):
+        return f"{self.name} - { self.sizecalculator(self.size) } "
 
 
 class Audio(models.Model):
