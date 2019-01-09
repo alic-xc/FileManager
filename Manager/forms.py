@@ -90,5 +90,28 @@ class PictureForm(forms.Form):
                                attrs={'class': 'form-control input-sm', 'id': 'picture-file',
                                       'accept': '.jpg,.png,.gif'}))
 
-class DocumentForm():
-    pass
+class DocumentForm(forms.Form):
+    name = forms.CharField(label='Document Name', max_length=50,
+                           widget=forms.TextInput(
+                               attrs={'placeholder': 'Enter Name Here', 'class': 'form-control input-sm',
+                                      'id': 'audio'}))
+
+    size = forms.IntegerField(
+        widget=forms.HiddenInput(
+            attrs={'id': 'size'})
+    )
+
+    summary = forms.CharField(label='Document Summary', max_length=200,
+                              widget=forms.Textarea(
+                                  attrs={'placeholder': 'Enter document Summary', 'class': 'form-control input-sm'}
+                              ))
+    folder = forms.ChoiceField(label='folder', choices=(Folder.objects.values('id', 'name')),
+                               )
+
+    folder = forms.ModelChoiceField(queryset=Folder.objects.all(), empty_label="--- select destination ---",
+                                    widget=forms.Select(attrs={'class': 'form-control input-sm'}))
+
+    file = forms.FileField(label='Upload file',
+                           widget=forms.FileInput(
+                               attrs={'class': 'form-control input-sm', 'id': 'document-file',
+                                      'accept': '.doc,.pdf,.docx'}))

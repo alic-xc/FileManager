@@ -281,7 +281,60 @@ def view_picture(request, filename):
     pass
 
 def document(request):
-    pass
+    if request.method == 'POST':
+
+        form = DocumentForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            try:
+                lists = ['doc', 'pdf']
+
+                al_ex = Document.objects.filter(name= form.cleaned_data['name'])
+                if al_ex.count() > 0:
+                    raise Exception("Already Exist")
+
+                ext = str(request.FILES['file']).rsplit(".")[-1]
+                if ext  not in lists:
+                    raise Exception('Not a valid type')
+
+                folder = Folder.objects.get(pk=form.cleaned_data['folder'].id)
+                file_name = f"{form.cleaned_data['name']}.{ext}"
+
+                # saving to fs
+                fs = FileSystemStorage('media/')
+                a = Document(name=form.cleaned_data['name'],
+                          format=ext.upper(),
+                          size=form.cleaned_data['size'],
+                          summary=form.cleaned_data['summary'],
+                          folder=folder)
+
+                # saving to model
+                a.save()
+                fs.save(os.path.join(folder.name,file_name), request.FILES['file'])
+                messages.success(request,'Data saved successfully')
+                return HttpResponseRedirect(reverse('document'))
+
+            except ModuleNotFoundError:
+                messages.error(request,'Server Internal Error!. Module Not Found')
+                return HttpResponseRedirect(reverse('document'))
+
+            except Folder.DoesNotExist:
+
+                messages.error(request,'Invalid Folder. Folder Not Found')
+                return HttpResponseRedirect(reverse('document'))
+
+            except Exception as err:
+
+                messages.error(request, err)
+                return HttpResponseRedirect(reverse('document'))
+
+    context = {
+        'recently': Document.custom.created_recently(),
+        'documents': Document.objects.all(),
+        'document': DocumentForm()
+    }
+
+    return render(request, 'Manager/app/documents.html', context=context)
 
 def view_document(request, filename):
     pass

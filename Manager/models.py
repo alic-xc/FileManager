@@ -212,7 +212,14 @@ class Document(models.Model):
         ordering = ['date']
         verbose_name_plural = 'Documents'
 
+    @staticmethod
+    def sizecalculator(size: int):
+        sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if size == 0:
+            return 'n/a';
+
+        i = floor(log(size) / log(1024))
+        return str(round(size / pow(1024, i), 2)) + ' ' + sizes[i];
 
     def __str__(self):
-
-        return f"{self.name} - {self.size} ({ self.format })"
+        return f"{self.name} - { self.sizecalculator(self.size) }  ({ self.format })"

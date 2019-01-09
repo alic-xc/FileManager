@@ -16,10 +16,10 @@ urlpatterns = [
     path('audio/<uuid:filename>/play', play_audio, name = 'play_audio'),
 
     path('picture', picture, name='picture'),
-    path('picture/<uuid:filename>', view_picture, name='view_picture'),
+    path('picture/<uuid:filename>/preview', view_picture, name='view_picture'),
 
     path('document', document, name="document"),
-    path('document/<uuid:filename>', view_document, name='view_document')
+    path('document/<uuid:filename>/preview', view_document, name='view_document')
 
 
 ]

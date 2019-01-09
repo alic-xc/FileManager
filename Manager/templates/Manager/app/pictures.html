@@ -69,7 +69,6 @@
 
        let a = document.querySelector('#picture-file').onblur = function(){
           let picture = this.files[0]
-          console.log(picture)
           if(picture.type == 'image/jpeg' || picture.type  == 'image/png' || picture.type == 'image/gif'){
 
                 document.querySelector('#size').value = picture.size
