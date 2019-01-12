@@ -278,7 +278,19 @@ def picture(request):
 
 
 def view_picture(request, filename):
-    pass
+    try:
+        node = Pictures.objects.get(hash=filename)
+
+        return render(request, 'Manager/app/view_picture.html', context={'picture': node})
+
+    except Pictures.DoesNotExist:
+        messages.error(request, "Picture Not Found")
+        return render(request, 'Manager/app/view_picture.html')
+
+    except TypeError:
+
+        messages.error(request, 'Needed a recognised Value')
+        return render(request, 'Manager/app/view_picture.html')
 
 def document(request):
     if request.method == 'POST':
@@ -337,7 +349,19 @@ def document(request):
     return render(request, 'Manager/app/documents.html', context=context)
 
 def view_document(request, filename):
-    pass
+    try:
+        node = Document.objects.get(hash=filename)
+
+        return render(request, 'Manager/app/view_document.html', context={'document': node})
+
+    except Audio.DoesNotExist:
+        messages.error(request, "Document Not Found")
+        return render(request, 'Manager/app/view_document.html')
+
+    except TypeError:
+
+        messages.error(request, 'Needed a recognised Value')
+        return render(request, 'Manager/app/view_document.html')
 
 
 

@@ -60,10 +60,10 @@ Live preview
               {% include 'Manager/error/error_manager.html' %}
               {% if picture %}
               <div class="col-sm-10 col-sm-offset-1">
-                <h4 class="font-alt mb-0"> Live Previewing {{ video.name }} </h4>
+                <h4 class="font-alt mb-0"> Live Previewing {{ picture.name }} </h4>
                 <hr class="divider-w mt-10 mb-20">
                   <div class="col-sm-10 col-sm-offset-1">
-
+                      <img id="image" src="http://127.0.0.1:8000/media/{{picture.folder.name}}/{{picture.name}}.{{picture.format}}" alt="">
                   </div>
 
 
@@ -81,5 +81,6 @@ Live preview
             </div>
         </div>
   </section>
+  
 
 {% endblock %}

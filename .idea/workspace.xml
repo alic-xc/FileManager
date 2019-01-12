@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d229a60b-b6f1-47f7-a8df-c419070a3932" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/Manager/static/assets/js/jquery.ez-plus.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/documents.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/documents.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/pictures.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/pictures.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/view_picture.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/view_picture.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/layout/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/layout/skeleton.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Manager/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="333" column="17" selection-start-line="333" selection-start-column="17" selection-end-line="333" selection-end-column="17" />
+            <state relative-caret-position="270">
+              <caret line="283" column="81" selection-start-line="283" selection-start-column="81" selection-end-line="283" selection-end-column="81" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -72,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Manager/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="224" column="85" selection-start-line="224" selection-start-column="85" selection-end-line="224" selection-end-column="85" />
+            <state relative-caret-position="272">
+              <caret line="207" column="10" selection-start-line="207" selection-start-column="10" selection-end-line="207" selection-end-column="10" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -131,9 +132,9 @@
         <option value="$PROJECT_DIR$/Manager/tt.py" />
         <option value="D:/projects/Flask projects/version 1.0/App.py" />
         <option value="$PROJECT_DIR$/Manager/urls.py" />
-        <option value="$PROJECT_DIR$/Manager/views.py" />
         <option value="$PROJECT_DIR$/Manager/forms.py" />
         <option value="$PROJECT_DIR$/Manager/models.py" />
+        <option value="$PROJECT_DIR$/Manager/views.py" />
       </list>
     </option>
   </component>
@@ -720,16 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="333" column="17" selection-start-line="333" selection-start-column="17" selection-end-line="333" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Manager/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="382">
@@ -742,10 +733,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Manager/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="224" column="85" selection-start-line="224" selection-start-column="85" selection-end-line="224" selection-end-column="85" />
+        <state relative-caret-position="272">
+          <caret line="207" column="10" selection-start-line="207" selection-start-column="10" selection-end-line="207" selection-end-column="10" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Manager/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="283" column="81" selection-start-line="283" selection-start-column="81" selection-end-line="283" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>

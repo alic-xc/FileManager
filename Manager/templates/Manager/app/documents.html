@@ -62,7 +62,7 @@
       let t = document.querySelectorAll('.folder')
       t.forEach(function(e){
         e.onclick = function(){
-            location.href = `document/${this.dataset.hash}`
+            location.href = `document/${this.dataset.hash}/preview`
 
         }
       })
@@ -110,7 +110,7 @@
               {% include 'Manager/error/error_manager.html' %}
 
               <div class="col-sm-12">
-                <h4 class="font-alt mb-0">Gallery</h4>
+                <h4 class="font-alt mb-0">Documents</h4>
 
                 <hr class="divider-w mt-10 mb-20">
 
@@ -122,7 +122,7 @@
                             <div class="folders">
                           {% for directory in recently reversed %}
                             <figure class='folder-node'>
-                              <i class='fa fa-image' style='margin-left:5px'></i>&nbsp;&nbsp;&nbsp;
+                              <i class='fa fa-file-text' style='margin-left:5px'></i>&nbsp;&nbsp;&nbsp;
                                 {{ directory }} Uploaded on {{ directory.date }}
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 ( hidden : {{ directory.hidden }} )
@@ -145,8 +145,8 @@
                                     </thead>
                                     <tbody>
                               {% for document in documents reversed %}
-                                <tr class='folder-node folder'  data-hash = '{{ picture.hash }}'>
-                                  <td><i class='fa fa-image' style='margin-left:5px'></i>
+                                <tr class='folder-node folder'  data-hash = '{{ document.hash }}'>
+                                  <td><i class='fa fa-file-text' style='margin-left:5px'></i>
                                     &nbsp;&nbsp;&nbsp;&nbsp;{{ document }}</td>
                                     <td>  {{ document.summary }} </td>
                                     <td>  {{ document.hidden }} </td>
