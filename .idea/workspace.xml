@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d229a60b-b6f1-47f7-a8df-c419070a3932" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Manager/static/assets/js/jquery.ez-plus.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/documents.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/documents.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/pictures.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/pictures.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/app/view_picture.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/app/view_picture.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/templates/Manager/layout/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/templates/Manager/layout/skeleton.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
