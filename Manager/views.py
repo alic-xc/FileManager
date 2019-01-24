@@ -27,7 +27,7 @@ def directory(request):
                 #checking database for existing name
 
                 exist = Folder.objects.filter(name=folder_form.cleaned_data['folder_name'])
-                if len(exist) > 0 :
+                if exist.count() > 0 :
                     raise Exception("Name already exist")
 
                 # setting creating a custom folder to media
