@@ -7,7 +7,7 @@ class FolderForm(forms.Form):
                                   widget= forms.TextInput(
                                       attrs={'placeholder':'Type Folder Name Here','class':'form-control input-sm'}) )
     status = forms.ChoiceField(label='Status',
-                               choices=(('','-- select folder attribute --'),(True, 'Hidden'),(False,'Unhide')),
+                               choices=(('','-- select folder attribute --'),(True, 'Private'),(False,'Public')),
                                widget= forms.Select(attrs={'class':'form-control input-sm'}),
                                )
 
@@ -19,7 +19,7 @@ class AudioForm(forms.Form):
                                    attrs={'placeholder':'Enter Name Here','class':'form-control input-sm','id':'audio'}))
 
     size = forms.IntegerField(
-                              widget=forms.HiddenInput(
+                              widget=forms.PrivateInput(
                                    attrs={'id':'size'})
                               )
 
@@ -45,7 +45,7 @@ class VideoForm(forms.Form):
                                       'id': 'audio'}))
 
     size = forms.IntegerField(
-        widget=forms.HiddenInput(
+        widget=forms.PrivateInput(
             attrs={'id': 'size'})
     )
 
@@ -71,7 +71,7 @@ class PictureForm(forms.Form):
                                       'id': 'audio'}))
 
     size = forms.IntegerField(
-        widget=forms.HiddenInput(
+        widget=forms.PrivateInput(
             attrs={'id': 'size'})
     )
 
@@ -97,7 +97,7 @@ class DocumentForm(forms.Form):
                                       'id': 'audio'}))
 
     size = forms.IntegerField(
-        widget=forms.HiddenInput(
+        widget=forms.PrivateInput(
             attrs={'id': 'size'})
     )
 
