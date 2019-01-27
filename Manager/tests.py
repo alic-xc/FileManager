@@ -11,14 +11,14 @@ import os
 class FileManagerTest(TestCase):
 
     def setUp(self):
-        self.image1 = ''
-        self.image2 = ''
-        self.video1 = ''
-        self.video2=''
-        self.document1 = ''
-        self.document2 = ''
-        self.audio1 = ''
-        self.audio2 = ''
+        self.image1 = 'testing/image.jpg'
+        self.image2 = 'testing/image2.jpg'
+        self.video1 = 'testing/video.mp3'
+        self.video2='testing/video2.mp3'
+        self.document1 = 'testing/doc.docx'
+        self.document2 = 'testing/doc2.docx'
+        self.audio1 = 'testing/audio.mp3'
+        self.audio2 = 'testing/audio2.mp3'
 
 
     def testing_folder_form(self):
