@@ -45,11 +45,13 @@ class FileManagerTest(TestCase):
         response1 = self.client.get(f'/folder/{uuid.unique}')
         self.assertEqual(response1.status_code, 200)
 
-    # def testing_video(self):
-    #     response = self.client.post('/video',)
-    #     pass
+    def testing_video(self):
+        data = SimpleUploadedFile(name = self.video1,content_type='text/mp4')
+        response = self.client.post('/video',)
+        pass
 
     def tearDown(self):
-
-        os.unlink('media/secret_2')
-        os.unlink('media/music')
+        if os.path.exists('media/secret_2'):
+            os.rmdir('media/secret_2')
+        if os.path.exists('media/music'):
+            os.rmdir('media/music')
