@@ -28,8 +28,6 @@ class AudioForm(forms.Form):
                               widget=forms.Textarea(
                                   attrs={'placeholder':'Enter Audio Summary','class':'form-control input-sm'}
                               ))
-    folder = forms.ChoiceField(label='folder', choices=(Folder.objects.values('id','name')),
-                               )
 
     folder = forms.ModelChoiceField(queryset=Folder.objects.all(), empty_label="--- select destination ---",
                                     widget=forms.Select(attrs={'class':'form-control input-sm'}))
@@ -53,8 +51,6 @@ class VideoForm(forms.Form):
                               widget=forms.Textarea(
                                   attrs={'placeholder': 'Enter Video Summary', 'class': 'form-control input-sm'}
                               ))
-    folder = forms.ChoiceField(label='folder', choices=(Folder.objects.values('id', 'name')),
-                               )
 
     folder = forms.ModelChoiceField(queryset=Folder.objects.all(), empty_label="--- select destination ---",
                                     widget=forms.Select(attrs={'class': 'form-control input-sm'}))
@@ -79,8 +75,7 @@ class PictureForm(forms.Form):
                               widget=forms.Textarea(
                                   attrs={'placeholder': 'Enter picture Summary', 'class': 'form-control input-sm'}
                               ))
-    folder = forms.ChoiceField(label='folder', choices=(Folder.objects.values('id', 'name')),
-                               )
+
 
     folder = forms.ModelChoiceField(queryset=Folder.objects.all(), empty_label="--- select destination ---",
                                     widget=forms.Select(attrs={'class': 'form-control input-sm'}))
@@ -105,8 +100,7 @@ class DocumentForm(forms.Form):
                               widget=forms.Textarea(
                                   attrs={'placeholder': 'Enter document Summary', 'class': 'form-control input-sm'}
                               ))
-    folder = forms.ChoiceField(label='folder', choices=(Folder.objects.values('id', 'name')),
-                               )
+
 
     folder = forms.ModelChoiceField(queryset=Folder.objects.all(), empty_label="--- select destination ---",
                                     widget=forms.Select(attrs={'class': 'form-control input-sm'}))
