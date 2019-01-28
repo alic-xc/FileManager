@@ -13,8 +13,8 @@ class FileManagerTest(TestCase):
     def setUp(self):
         self.image1 = 'testing/image.jpg'
         self.image2 = 'testing/image2.jpg'
-        self.video1 = 'testing/video.mp3'
-        self.video2='testing/video2.mp3'
+        self.video1 = 'testing/video.mp4'
+        self.video2='testing/video2.mp4'
         self.document1 = 'testing/doc.docx'
         self.document2 = 'testing/doc2.docx'
         self.audio1 = 'testing/audio.mp3'
@@ -46,8 +46,19 @@ class FileManagerTest(TestCase):
         self.assertEqual(response1.status_code, 200)
 
     def testing_video(self):
-        data = SimpleUploadedFile(name = self.video1,content_type='text/mp4')
-        response = self.client.post('/video',)
+        response = self.client.post('/folder',{'folder_name':'secret_2','status':True})
+        file = open(f'media/{self.video1}', mode='rb')
+        data = SimpleUploadedFile(name = self.video1, content_type='text/mp4', content=file.read() )
+        response1 = self.client.post('/video',{'name':'testing.mp4',
+         'summary':'my best music','folder':1,'file':data})
+
+        messages = list(get_messages(response1.wsgi_request))
+        self.assertEqual(str(messages[0]), 'Data saved successfully')
+        self.assertEqual(response1.status_code, 200)
+
+
+    def testing_video_list(self):
+
         pass
 
     def tearDown(self):
