@@ -161,7 +161,7 @@ def video(request):
                     raise Exception("Already Exist")
 
                 ext = str(request.FILES['file']).rsplit(".")[-1]
-                if ext  not in lists:
+                if ext not in lists:
                     raise Exception('Not a valid type')
 
                 folder = Folder.objects.get(pk=form.cleaned_data['folder'].id)
@@ -169,6 +169,7 @@ def video(request):
 
                 # saving to fs
                 fs = FileSystemStorage('media/')
+                fs.save(os.path.join(folder.name,file_name), request.FILES['file'])
                 a = Videos(name=form.cleaned_data['name'],
                           format=ext.upper(),
                           size=form.cleaned_data['size'],
@@ -177,7 +178,6 @@ def video(request):
 
                 # saving to model
                 a.save()
-                fs.save(os.path.join(folder.name,file_name), request.FILES['file'])
                 messages.success(request,'Data saved successfully')
                 return HttpResponseRedirect(reverse('video'))
 
